@@ -1,0 +1,49 @@
+<section class="loginSection">
+    <div class="contentBox">
+        <div class="formBox">
+            <!-- <img color="primary" class="melinoLogoLogin mb-2" src=""> -->
+            <h4 class="mb-4">Hell nah, this needs to be fiksd</h4>
+             <form [formGroup]="registerForm" class="registerForm" (ngSubmit)="register()">
+                <div fxLayout="column">
+                    <mat-form-field color="primary" appearance="outline" class="loginFormField">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="text" required>
+                    </mat-form-field>
+                    <mat-form-field color="primary" appearance="outline" class="loginFormField">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                    </mat-form-field>
+                    <div class="passwordFormWrapper">
+                        <mat-form-field appearance="outline" class="loginFormField">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" type="password" #password required>
+                        </mat-form-field>
+                    </div>
+                    <div class="passwordFormWrapper">
+                        <mat-form-field appearance="outline" class="loginFormField">
+                            <mat-label>Confirm password</mat-label>
+                            <input matInput formControlName="confirmPassword" type="password" #confirmPassword required>
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field appearance="outline" class="loginFormField">
+                        <mat-label>Age</mat-label>
+                        <input matInput formControlName="age" type="text" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="loginFormField">
+                        <mat-label>Height (cm)</mat-label>
+                        <input matInput formControlName="height" type="text" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="loginFormField">
+                        <mat-label>Weight (kg)</mat-label>
+                        <input matInput formControlName="weight" type="text" required>
+                    </mat-form-field>
+                    <button mat-flat-button color="primary" class="login-button">
+                        <fa-icon [icon]="['fas', 'circle-notch']" [spin]="true" *ngIf="(authService.isAuthenticatingLoader$) | async"></fa-icon>
+                        Register
+                    </button>
+                </div>
+            </form>
+            <div class="loginLinks pt-3" [routerLink]="['/auth/login']"> Back to login</div>
+        </div>
+    </div>
+</section>

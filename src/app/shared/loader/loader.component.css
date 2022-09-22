@@ -1,0 +1,46 @@
+.loader {
+    position: absolute;
+    width:100%;
+    top:0;
+    left: 0;
+    bottom: 0;
+    z-index: 500000;
+    background-size: cover;
+}
+
+.loader-progress-spinner {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin-left: 0px;
+    margin-top: -50px;
+    z-index: 500001;
+}
+
+@media (max-width: 768px) {
+    .loader-progress-spinner {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        z-index: 500001;
+    }
+}
+
+@media (min-width: 1369px) {
+    .loader-progress-spinner {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        top: 50%;
+        left: 50%;
+        margin-left: 50px;
+        margin-top: -50px;
+        z-index: 500001;
+    }
+}

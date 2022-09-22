@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+    padding: 0px;
+    margin: 0px;
+}
+
+.flexBox{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.loginSection{
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0.7rem;
+    }
+
+    font-size: 13px!important;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%!important;
+    height: 100vh;
+    display:flex;
+    border-radius: 50px;
+
+    .orText, .loginLinks, .rememberMe {
+        color:rgb(255, 255, 255, 0.6);
+    }
+
+    .loginLinks{
+        cursor: pointer;
+        font-size: 13px;
+    }
+    
+    h4{
+        color: white;
+    }
+    
+    .linkFlexBox{
+        display: flex;
+        align-items: center;
+    }
+    
+    .imgBox{
+        position: absolute!important;
+        top:0!important;
+        right:0!important;
+        width: 100%!important;
+        height: 100%!important;
+    } 
+
+    .contentBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%!important;
+        z-index: 1!important;
+        background: none!important;
+    }  
+
+    .contentBox .formBox{
+        width: fit-content!important;
+        padding: 60px;
+        background: #0D1921!important;
+        margin: 50px;
+        border-radius: 30px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .imgBox img{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .contentBox .formBox .melinoLogoLogin{
+        display: inline-block;
+        width: 150px;
+    }
+    
+    .login-button {
+        background-color: #8aff88;
+        color: rgb(0, 0, 0);
+        margin: 5px 0!important;
+    }
+    
+    .contentBox .formBox .smallerlogo{
+        font-weight: 600;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        display: inline-block;
+        letter-spacing: 1px;
+        max-width: 100px;
+    }
+    
+    .mat-icon.mat-icon-inline{
+        font-size: medium!important;
+        color: white;
+    }
+
+    label{
+        margin-bottom: 0px;
+    }
+
+    .registerLink{
+        color:#8aff88;
+        cursor: pointer;
+    }
+}
+
+mat-checkbox{
+    .mat-checkbox-inner-container {
+        width: 12px;
+        height: 12px;
+    }
+    
+    label{
+        margin-bottom: 0px;
+    }
+}
+
+.mat-checkbox-indeterminate, .mat-checkbox-background, .mat-accent, .mat-checkbox-checked {
+    svg path {
+        fill: transparent !important;
+    }
+}
+
+.mat-checkbox-frame { 
+    border-color: rgb(255 255 255 / 73%)!important;
+}
+
+.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: #8aff88;
+}
+
+.mat-checkbox-checkmark-path {
+    stroke: #000000 !important;
+}
+
+.mat-form-field {
+    .mat-input-element {
+        color: slategray;
+    }
+    .mat-form-field-label {
+        color: slategray;
+    }
+    .mat-form-field-outline{
+        color: rgb(255 255 255 / 73%)
+    }
+    .mat-form-field-underline {
+        background-color: slategray;
+    }
+    .mat-form-field-ripple {
+        background-color: slategray;
+    }
+    .mat-form-field-required-marker {
+        color: slategray;
+    }
+}
+
+.mat-form-field.mat-focused{
+    .mat-form-field-outline, .mat-form-field-label{
+        color: #8aff88;
+    }
+}

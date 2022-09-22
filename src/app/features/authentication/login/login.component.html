@@ -1,0 +1,31 @@
+<section class="loginSection">
+    <div class="contentBox">
+        <div class="formBox">
+            <!-- <img color="primary" class="melinoLogoLogin mb-2" src=""> -->
+            <h4 class="mb-4">Your Fitness Tracker</h4>
+             <form [formGroup]="loginForm" class="loginForm" (ngSubmit)="login()">
+                <div fxLayout="column">
+                    <mat-form-field color="primary" appearance="outline" class="loginFormField">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required>
+                    </mat-form-field>
+                    <div class="passwordFormWrapper">
+                        <mat-form-field appearance="outline" class="loginFormField">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" type="password" #password required>
+                        </mat-form-field>
+                    </div>
+                    <div class="flexBox mb-2">
+                        <mat-checkbox color="primary" class="rememberMe px-0 py-1">Remember</mat-checkbox>
+                        <div class="linkFlexBox loginLinks" [routerLink]="['/login/forgot']">Password?</div>
+                    </div>
+                    <button mat-flat-button color="primary" class="login-button">
+                        <fa-icon [icon]="['fas', 'circle-notch']" [spin]="true" *ngIf="(authService.isAuthenticatingLoader$) | async"></fa-icon>
+                        Log in
+                    </button>
+                </div>
+            </form>
+            <div class="loginLinks pt-3" [routerLink]="['/auth/register']" > Don't have an account? <a class="registerLink"> Register </a></div>
+        </div>
+    </div>
+</section>
