@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -7,24 +7,29 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  registerForm: UntypedFormGroup;
   submitted = false;
+  step : number = 1;
 
-  constructor(public authService: AuthService, private formGroup: UntypedFormBuilder) {
-    this.registerForm = this.formGroup.group({
+  multiStepForm = new FormGroup({
+    userForm : this.formGroup.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }),
+    healthDataForm : this.formGroup.group({
       age: ['', Validators.required],
       weight: ['', Validators.required],
       height: ['', Validators.required],
     })
-  }
+  })
 
-  ngOnInit(): void {
+  constructor(public authService: AuthService, private formGroup: UntypedFormBuilder) {}
+
+  changeStep(way: string){
+    way === 'forward' ? this.step += 1 : this.step -= 1;
   }
 
   register(){}
