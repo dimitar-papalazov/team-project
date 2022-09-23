@@ -3,10 +3,12 @@
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/backgrounds/fitness-bg.jpg') center fixed;
 }
 
 .mainText{
     color: white;
     text-align:center;
-    padding-top:200px
+    padding-top:200px;
+    height: 100vh;
 }
