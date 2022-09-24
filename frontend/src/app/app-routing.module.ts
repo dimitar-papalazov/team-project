@@ -11,14 +11,14 @@ const routes: Routes = [
        data: {title: 'Login'}
   },
 
-  { path: '', component: OverlayComponent, canActivate: [AuthGuard],
+  { path: '', component: OverlayComponent,
       children: [
 
       { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },
 
-      // { path: 'dashboard',
-      //  loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
-      // },
+      { path: 'dashboard',
+       loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
 
     ]
   },

@@ -1,1 +1,75 @@
-<p>overlay works!</p>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer [opened]="(responsiveListenerService.isHandset$ | async) ? 'false' : 'true'" [ngClass]="(responsiveListenerService.isHandset$ | async) ? 'smallSidenav' : 'bigSidenav'" fixedInViewport
+      [attr.role]="(responsiveListenerService.isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(responsiveListenerService.isHandset$ | async) ? 'over' : 'side'">
+      <div *ngIf="!(responsiveListenerService.isHandset$ | async)" class="mb-3 center">
+        <img src="../../../assets/logos/gym-img.png" routerLink="dashboard" alt="m" class="sidenav-logo ml-0">
+        <!-- <img *ngIf="(responsiveListenerService.isMediumDesktop$ | async)" src="../../../assets/media/m.svg" class="sidenav-logo-small"> -->
+      </div>
+      <mat-nav-list>
+        <a (click)="toggleSidenav()" class="menuItem mb-1" *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item.route" routerLinkActive="active">
+          <!-- <fa-icon [icon]="['fas', item.icon]" [ngClass]="(responsiveListenerService.isMediumDesktop$ | async) && !(responsiveListenerService.isHandset$ | async) ? 'fa-2xl' : 'mr-2'" matBadge={{this.badges[item.badge]}} matBadgeSize="small" matBadgeColor="warn" [matBadgeHidden]="!item.badge"></fa-icon> -->
+          <i [class]="item.icon" class="mr-2" aria-hidden="true"> </i>
+          {{item.name}}
+        </a>
+      </mat-nav-list>
+      <mat-divider class="mt-2"></mat-divider>
+      <div class="bottomMenuItems pb-4">
+
+        <div class="bottomButtons px-5 mb-3">
+            <div class="col-6 languageSwitcher alignRight" [class.unselected] = "this.language.value == 'mk'">
+                EN
+            </div>
+            <div class="col-6 languageSwitcher alignLeft" [class.unselected] = "this.language.value == 'en'">
+                MK
+            </div>
+        </div>
+
+        <a class="policyLink">Privacy policy</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+    <mat-toolbar [ngClass]="(responsiveListenerService.isHandset$ | async) ? 'smallToolbar py-2' : 'bigToolbar'" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="fld ml-3">
+            <div class="right">
+                <input class="searchbox" (keydown.enter)="keyPress($event)" type="text" placeholder="Search">
+            </div>
+        </div>
+      <mat-icon *ngIf="!(responsiveListenerService.isHandset$ | async) && this.titleService.hasBackLink.value !== ''" class="backIcon without-background" [routerLink]="[this.titleService.hasBackLink.value]">arrow_back_ios</mat-icon>
+      <!-- <h1 *ngIf="!(responsiveListenerService.isHandset$ | async)" class="navTitle">{{this.titleService.title | async}}</h1> -->
+      <button *ngIf="(responsiveListenerService.isHandset$ | async)" mat-button class="menu-button" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+        <img *ngIf="(responsiveListenerService.isHandset$ | async)" src="../../../assets/logos/gym-img.png" class="mobile-toolbar-logo mr-4">
+      <span class="spacer"></span>
+      <div class="greeting p-10 ml-1 mr-4 mt-1" [matMenuTriggerFor]="userMenu">
+        <div *ngIf="!(responsiveListenerService.isHandset$ | async)" class="flxBoxIcon ml-1 mr-2">
+          {{user.value.FullName}}
+        </div>
+        <div class="flxBoxIcon ml-1" [class.mr-3]="(responsiveListenerService.isHandset$ | async)">
+          <i class="fa fa-chevron-down"></i>
+        </div>
+      </div>
+      <mat-menu #userMenu="matMenu" color="accent" xPosition="before" yPosition="below">
+        <button mat-menu-item color="accent" routerLink="account-settings">
+            <i class="fa fa-user mr-2" aria-hidden="true"> </i>
+          <span>Account</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">
+            <i class="fa fa-arrow-right mr-2" aria-hidden="true"> </i>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <main class="content pr-3 pl-3">
+      <div class="titleMobile">
+        <mat-icon *ngIf="(responsiveListenerService.isHandset$ | async) && this.titleService.hasBackLink.value !== ''" class="backIcon without-background" [routerLink]="[this.titleService.hasBackLink.value]">arrow_back_ios</mat-icon>
+        <h1 *ngIf="(responsiveListenerService.isHandset$ | async)" class="smallNavTitle">{{this.titleService.title | async}}</h1>
+      </div>
+      <router-outlet></router-outlet>
+      <app-loader></app-loader>
+    </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

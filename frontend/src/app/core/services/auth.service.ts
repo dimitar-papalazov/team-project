@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
-import { ForgotPasswordModel, User } from 'src/app/core/models/user';
-import { ActivationData } from '../models/activationData';
 import { socialLogins } from '../enums/social-logins.enum';
-import { socialActivationData } from '../models/socialActivationData';
 import { LocalStorageService } from './local-storage.service';
-import { RegisterResponseData } from '../models/register';
 
 @Injectable({
   providedIn: 'root'

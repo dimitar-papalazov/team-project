@@ -1,4 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import '~@angular/material/theming';
+
+@font-face {
+    font-family: "Sora";
+    font-display: block;
+    src: local("Sora"), url(./assets/fonts/Sora-Regular.ttf) format("ttf");
+}
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Sora',
+  $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+  $display-3:     mat-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+  $display-2:     mat-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+  $display-1:     mat-typography-level(34px, 40px, 400, $letter-spacing: -0.02em),
+  $headline:      mat-typography-level(24px, 32px, 400, $letter-spacing: -0.02em),
+  $title:         mat-typography-level(20px, 32px, 500, $letter-spacing: -0.02em),
+  $subheading-2:  mat-typography-level(16px, 28px, 400, $letter-spacing: -0.02em),
+  $subheading-1:  mat-typography-level(15px, 24px, 400, $letter-spacing: -0.02em),
+  $body-2:        mat-typography-level(14px, 24px, 500, $letter-spacing: -0.02em),
+  $body-1:        mat-typography-level(14px, 20px, 400, $letter-spacing: -0.02em),
+  $caption:       mat-typography-level(12px, 20px, 400),
+  $button:        mat-typography-level(14px, 14px, 500),
+  // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 400)
+);
+@include mat.core($custom-typography);
+
 html,body{
     padding: 0px;
     margin: 0px;
@@ -8,6 +35,10 @@ html,body{
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+
+.mat-list-base .mat-list-item {
+    color: rgb(225 225 225 / 87%);
 }
 
 .loginSection{
@@ -169,4 +200,28 @@ mat-checkbox{
     .mat-form-field-outline, .mat-form-field-label{
         color: #8aff88;
     }
+}
+
+.mat-list-base .mat-list-item {
+    font-size: 17px;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 74px;
+}
+
+a.mat-list-item.active, a.mat-list-item.active:hover, a.mat-list-item.active:focus{
+    background-color: #3c4a4c;
+}
+
+.mat-list-base {
+    padding-top: 12px!important;
+}
+
+.mat-menu-panel{
+    background-color: #141514;
+}
+
+.mat-menu-item{
+    color: rgba(225, 225, 225, 0.87);
 }

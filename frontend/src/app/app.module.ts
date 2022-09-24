@@ -10,6 +10,8 @@ import { LoaderComponent } from "./shared/loader/loader.component";
 import { LoaderService } from "./shared/services/loader.service";
 import { ResponsiveListener } from "./shared/services/responsive-listener.service";
 import { SharedModule } from "./shared/shared.module";
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { TitleService } from "./core/title.service";
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { SharedModule } from "./shared/shared.module";
     LoaderComponent
   ],
   bootstrap: [AppComponent],
-  providers: [LoaderService, ResponsiveListener, AuthGuard]
+  providers: [LoaderService, ResponsiveListener, AuthGuard, TitleService]
 })
 export class AppModule {
 }
