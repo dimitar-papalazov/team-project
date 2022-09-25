@@ -1,5 +1,10 @@
 export default class Model {
   constructor() { }
 
-  dto() { return {} }
+  dto() {
+    const obj = { ...this }
+    obj.TAG = undefined
+
+    return { ...obj }
+  }
 }

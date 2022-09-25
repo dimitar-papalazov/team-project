@@ -7,9 +7,9 @@ CREATE TABLE `team_project`.`users`(
     `username` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
-    `height` FLOAT NOT NULL,
-    `weight` FLOAT NOT NULL,
-    `age` INT NOT NULL,
+    `height` FLOAT,
+    `weight` FLOAT,
+    `age` INT,
     PRIMARY KEY(`id`),
     UNIQUE `users_email`(`email`),
     UNIQUE `users_username`(`username`)

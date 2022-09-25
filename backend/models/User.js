@@ -6,7 +6,6 @@ export default class User extends Model {
   constructor(config) {
     super()
     this.TAG = `[ User ]`
-    this.id = config.id === undefined ? null : config.id
     this.name = config.name
     this.surname = config.surname
     this.username = config.username
@@ -15,6 +14,9 @@ export default class User extends Model {
     this.height = config.height === undefined ? null : config.height
     this.weight = config.weight === undefined ? null : config.weight
     this.age = config.age === undefined ? null : config.age
+    // custom exercises
+    // workouts
+    // plans
   }
 
   // mozi ke treba dao
