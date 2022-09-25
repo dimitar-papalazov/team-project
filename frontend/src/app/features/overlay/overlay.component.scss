@@ -47,15 +47,15 @@
 }
 
 .navTitle{
-  font-family: 'Pacifico', cursive!important;
   font-size: 25px;
+  color: rgb(192 195 196);
 }
 
 .smallNavTitle{
-  font-family: 'Pacifico', cursive!important;
   font-size: 20px!important;
   width: 70px;
   cursor: pointer;
+  color: rgb(192 195 196);
 }
 
 .policyLink{
@@ -172,6 +172,7 @@ main {
 .titleMobile{
   display: flex!important;
   align-items: center;
+  max-height: 90px;
 }
 
 .backIcon{
