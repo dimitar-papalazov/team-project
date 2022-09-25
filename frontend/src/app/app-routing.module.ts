@@ -20,6 +20,21 @@ const routes: Routes = [
        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
 
+      { path: 'plan',
+       loadChildren: () => import('./features/plan/plan.module').then(m => m.PlanModule)
+      },
+
+      { path: 'exercises',
+       loadChildren: () => import('./features/exercises/exercises.module').then(m => m.ExercisesModule)
+      },
+
+      { path: 'workouts',
+       loadChildren: () => import('./features/workouts/workouts.module').then(m => m.WorkoutsModule)
+      },
+
+      { path: 'account',
+       loadChildren: () => import('./features/account/account.module').then(m => m.AccountModule)
+      },
     ]
   },
   { path: '**', component: PageNotFoundComponent}

@@ -12,6 +12,10 @@ import { ResponsiveListener } from "./shared/services/responsive-listener.servic
 import { SharedModule } from "./shared/shared.module";
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { TitleService } from "./core/title.service";
+import { PlanComponent } from './features/plan/plan.component';
+import { WorkoutsComponent } from './features/workouts/workouts.component';
+import { ExercisesComponent } from './features/exercises/exercises.component';
+import { AccountComponent } from './features/account/account.component';
 
 
 @NgModule({
