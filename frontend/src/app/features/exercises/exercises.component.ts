@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { TitleService } from 'src/app/core/title.service';
 
 @Component({
@@ -8,10 +9,10 @@ import { TitleService } from 'src/app/core/title.service';
 })
 export class ExercisesComponent implements OnInit {
 
-  constructor(private titleService: TitleService) { }
+  constructor(private titleService: TitleService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Exercises')
+    this.titleService.setTitle(this.translateService.instant('Exercises'))
   }
 
 }

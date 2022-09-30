@@ -28,15 +28,10 @@ export class LocalStorageService {
   }
 
   clear() {
-    let theme = this.getItem('theme')
-    theme = theme !== null ? theme : '0'
-
     let language = this.getItem('lang')
     language = language !== null ? language : 'en-uS'
 
     localStorage.clear();
-
-    this.setItem('theme', theme)
     this.setItem('lang', language)
   }
 }

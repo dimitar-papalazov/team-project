@@ -17,6 +17,7 @@
     margin-left: 0px;
     margin-top: -50px;
     z-index: 500001;
+    color: #8aff88;
 }
 
 @media (max-width: 768px) {
@@ -29,6 +30,7 @@
         margin-left: -50px;
         margin-top: -50px;
         z-index: 500001;
+        color: #8aff88;
     }
 }
 

@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { DashboardComponent } from "./dashboard.component";
+import { DashboardService } from "./dashboard.service";
 
 const routes: Routes = [
     {
@@ -22,6 +23,8 @@ const routes: Routes = [
         RouterModule
     ], declarations: [
         DashboardComponent
+    ], providers: [
+        DashboardService
     ]
 })
 export class DashboardModule {

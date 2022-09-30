@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -26,7 +27,7 @@ export class RegisterComponent {
     })
   })
 
-  constructor(public authService: AuthService, private formGroup: UntypedFormBuilder) {}
+  constructor(public authService: AuthService, private formGroup: UntypedFormBuilder, private translateService: TranslateService) {}
 
   changeStep(way: string){
     way === 'forward' ? this.step += 1 : this.step -= 1;

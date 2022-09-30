@@ -1,0 +1,23 @@
+{
+	"Email": "Емаил",
+	"Password": "Лозинка",
+	"Remember": "Запомни",
+	"Don't have an account" : "Не сте корисник",
+	"Log in" : "Најави се",
+	"Name" : "Име",
+	"Confirm password" : "Потврди лозинка",
+	"Age" : "Возраст",
+	"Height (cm)" : "Висина (см)",
+	"Weight (kg)" : "Тежина (кг)",
+	"Enter all fields to register" : "Внесете ги сите полиња за да се најавите",
+	"Next" : "Продолжи",
+	"Previous" : "Назад",
+	"Dashboard" : "Дашборд",
+	"Plan" : "План",
+	"Workouts" : "Тренинзи",
+	"Exercises" : "Вежби",
+	"Account" : "Профил",
+	"Log out" : "Одјави се",
+    "Privacy policy" : "Политика на приватност",
+    "Search" : "Пребарувај"
+}

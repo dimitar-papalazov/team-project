@@ -20,6 +20,12 @@ import { getPaginatorIntlEn } from "./paginator-intl-en";
 import { MatPaginatorIntl } from "@angular/material/paginator";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { TranslateModule } from "@ngx-translate/core";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 export const tooltipDefaults: MatTooltipDefaultOptions = {
     showDelay: 1000,
@@ -29,7 +35,8 @@ export const tooltipDefaults: MatTooltipDefaultOptions = {
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        TranslateModule
     ],
     exports: [
 
@@ -47,7 +54,8 @@ export const tooltipDefaults: MatTooltipDefaultOptions = {
         OverlayModule,
         PortalModule,
         ScrollingModule,
-        HttpClientModule
+        HttpClientModule,
+        TranslateModule
     ], declarations: [
     ],
     providers: [

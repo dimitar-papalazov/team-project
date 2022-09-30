@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { WorkoutsComponent } from "./workouts.component";
+import { WorkoutsService } from "./workouts.service";
 
 const routes: Routes = [
     {
@@ -22,6 +23,8 @@ const routes: Routes = [
         RouterModule
     ], declarations: [
         WorkoutsComponent
+    ], providers: [
+        WorkoutsService
     ]
 })
 

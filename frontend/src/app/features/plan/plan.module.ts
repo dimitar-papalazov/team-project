@@ -4,6 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { PlanComponent } from "./plan.component";
+import { PlanService } from "./plan.service";
 
 const routes: Routes = [
     {
@@ -22,6 +23,8 @@ const routes: Routes = [
         RouterModule
     ], declarations: [
         PlanComponent
+    ], providers: [
+        PlanService
     ]
 })
 export class PlanModule {

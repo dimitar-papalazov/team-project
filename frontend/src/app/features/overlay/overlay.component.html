@@ -10,29 +10,29 @@
         <a (click)="toggleSidenav()" class="menuItem mb-1" *ngFor="let item of menuItems" mat-list-item [routerLink]="'/'+item.route" routerLinkActive="active">
           <!-- <fa-icon [icon]="['fas', item.icon]" [ngClass]="(responsiveListenerService.isMediumDesktop$ | async) && !(responsiveListenerService.isHandset$ | async) ? 'fa-2xl' : 'mr-2'" matBadge={{this.badges[item.badge]}} matBadgeSize="small" matBadgeColor="warn" [matBadgeHidden]="!item.badge"></fa-icon> -->
           <i [class]="item.icon" class="mr-2" aria-hidden="true"> </i>
-          {{item.name}}
+          {{item.name | translate}}
         </a>
       </mat-nav-list>
       <mat-divider class="mt-2"></mat-divider>
       <div class="bottomMenuItems pb-4">
 
         <div class="bottomButtons px-5 mb-3">
-            <div class="col-6 languageSwitcher alignRight" [class.unselected] = "this.language.value == 'mk'">
+            <div class="col-6 languageSwitcher alignRight" [class.unselected] = "this.language.value == 'mk'" (click)="changeLanguage('en')">
                 EN
             </div>
-            <div class="col-6 languageSwitcher alignLeft" [class.unselected] = "this.language.value == 'en'">
+            <div class="col-6 languageSwitcher alignLeft" [class.unselected] = "this.language.value == 'en'" (click)="changeLanguage('mk')">
                 MK
             </div>
         </div>
 
-        <a class="policyLink">Privacy policy</a>
+        <a class="policyLink">{{ 'Privacy policy' | translate}}</a>
       </div>
     </mat-sidenav>
     <mat-sidenav-content>
     <mat-toolbar [ngClass]="(responsiveListenerService.isHandset$ | async) ? 'smallToolbar py-2' : 'bigToolbar'" fxLayout="row" fxLayoutAlign="space-between center">
         <div *ngIf="!(responsiveListenerService.isHandset$ | async)" class="fld ml-3">
             <div class="right">
-                <input class="searchbox" (keydown.enter)="keyPress($event)" type="text" placeholder="Search">
+                <input class="searchbox" (keydown.enter)="keyPress($event)" type="text" placeholder="{{'Search' | translate}}">
             </div>
         </div>
       <mat-icon *ngIf="!(responsiveListenerService.isHandset$ | async) && this.titleService.hasBackLink.value !== ''" class="backIcon without-background" [routerLink]="[this.titleService.hasBackLink.value]">arrow_back_ios</mat-icon>
@@ -53,12 +53,12 @@
       <mat-menu #userMenu="matMenu" color="accent" xPosition="before" yPosition="below">
         <button mat-menu-item color="accent" routerLink="account-settings">
             <i class="fa fa-user mr-2" aria-hidden="true"> </i>
-          <span>Account</span>
+          <span>{{ 'Account' | translate}}</span>
         </button>
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="logout()">
             <i class="fa fa-arrow-right mr-2" aria-hidden="true"> </i>
-          <span>Log out</span>
+          <span>{{ 'Log out' | translate}}</span>
         </button>
       </mat-menu>
     </mat-toolbar>

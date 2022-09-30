@@ -1,0 +1,23 @@
+{
+	"Email": "Email",
+	"Password": "Password",
+	"Remember": "Remember",
+	"Don't have an account" : "Don't have an account",
+	"Log in" : "Log in",
+	"Name" : "Name",
+	"Confirm password" : "Confirm password",
+	"Age" : "Age",
+	"Height (cm)" : "Height (cm)",
+	"Weight (kg)" : "Weight (kg)",
+	"Enter all fields to register" : "Enter all fields to register",
+	"Next" : "Next",
+	"Previous" : "Previous",
+	"Dashboard" : "Dashboard",
+	"Plan" : "Plan",
+	"Workouts" : "Workouts",
+	"Exercises" : "Exercises",
+	"Account" : "Account",
+	"Log out" : "Log out",
+	"Privacy policy" : "Privacy policy",
+	"Search" : "Search"
+}
