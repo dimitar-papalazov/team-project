@@ -3,8 +3,16 @@ export default class Model {
 
   dto() {
     const obj = { ...this }
-    obj.TAG = undefined
+    delete obj.TAG
+    delete obj.relations
+    
+    for (let key of Object.keys(obj)) {
+      if (obj[key] === undefined) obj[key] = `NULL`
+      else if(this.relations && !this.relations.includes(key)) obj[key] = `'${obj[key]}'`
+    }
 
     return { ...obj }
   }
+
+  static dao = () => { return {} }
 }

@@ -1,25 +1,57 @@
 import connection from '../database/connection.js'
 
 export default class Service {
-  constructor(table, classType) {
+  constructor(table, classType, relations) {
     this.connection = connection
     this.table = table
     this.classType = classType
+    this.relations = relations
   }
 
   create(object) {
     return new Promise((resolve, reject) => {
       const dto = object.dto()
-      const keys = Object.keys(dto).toString()
-      const values = Object.values(dto).toString()
-      console.log(keys, values)
+      let keys = Object.keys(dto)
+      let values = Object.values(dto)
+
+      if (this.relations)
+        for (let relation of this.relations) {
+          for (let key of keys) {
+            if (key === relation.key) {
+              const index = keys.indexOf(key)
+              relation.value = values[index]
+              keys.splice(index)
+              values.splice(index)
+            }
+          }
+        }
+
+      keys = keys.toString()
+      values = values.toString()
+
       this.connection.query(`insert into ${this.table} (${keys}) values (${values});`,
         (error, results) => {
           if (error) {
             return reject(error)
           }
 
-          return this.read(results.insertId).then(result => resolve(result)).catch(error => reject(error))
+          return this.read(results.insertId).then(result => {
+            if (this.relations)
+              for (let relation of this.relations) {
+                relation.service.create(new relation.classType(relation.value, result.id))
+                  .then(() => { 
+                    result[relation.key] = relation.value
+                    delete relation.value
+                    return resolve(result)
+                  })
+                  .catch(error => {
+                    this.delete(result.id)
+                    return reject(error)
+                  })
+              }
+            else return resolve(result)
+          })
+            .catch(error => reject(error))
         })
     })
   }

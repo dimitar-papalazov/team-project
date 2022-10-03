@@ -4,19 +4,14 @@ export default class Exercise extends Model {
   constructor(config) {
     super()
     this.TAG = `[ Exercise ]`
+    this.relations = ['user_id']
     this.name = config.name
     this.sets = config.sets
-    this.reps = config.reps // progress
-    this.time = config.time // progress
-    this.weight = config.weight // progress
-    this.intensity = config.intensity // progress
-    this.distance = config.distance // progress
-    this.goalReps = config.goalReps // number
-    this.goalTime = config.goalTime // number
-    this.goalWeight = config.goalWeight // number
-    this.goalIntensity = config.goalIntensity // number
-    this.goalDistance = config.goalDistance // number
+    this.goal_reps = config.goal_reps // number
+    this.goal_time = config.goal_time // number
+    this.goal_weight = config.goal_weight // number
+    this.goal_distance = config.goal_distance // number
     this.url = config.url
-    // user
+    this.user_id = config.user_id
   }
 }
