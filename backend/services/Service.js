@@ -14,7 +14,7 @@ export default class Service {
       let keys = Object.keys(dto)
       let values = Object.values(dto)
 
-      if (this.relations)
+      if (this.relations) {
         for (let relation of this.relations) {
           for (let key of keys) {
             if (key === relation.key) {
@@ -25,6 +25,7 @@ export default class Service {
             }
           }
         }
+      }
 
       keys = keys.toString()
       values = values.toString()
@@ -36,7 +37,7 @@ export default class Service {
           }
 
           return this.read(results.insertId).then(result => {
-            if (this.relations)
+            if (this.relations) {
               for (let relation of this.relations) {
                 relation.service.create(new relation.classType(relation.value, result.id))
                   .then(() => { 
@@ -49,7 +50,7 @@ export default class Service {
                     return reject(error)
                   })
               }
-            else return resolve(result)
+            } else return resolve(result)
           })
             .catch(error => reject(error))
         })
@@ -86,6 +87,18 @@ export default class Service {
       let setString = ''
       const keys = Object.keys(object)
 
+      if (this.relations) {
+        for (let relation of this.relations) {
+          for (let key of keys) {
+            if (key === relation.key) {
+              const index = keys.indexOf(key)
+              relation.value = object[key]
+              keys.splice(index)
+            }
+          }
+        }
+      }
+
       for (let key of keys) {
         const value = `${object[key]}`
 
@@ -96,12 +109,27 @@ export default class Service {
         }
       }
 
-      this.connection.query(`update ${this.table} set ${setString} where id = ${id}`, (error, results) => {
+      this.connection.query(`update ${this.table} set ${setString} where id = ${id}`, (error, result) => {
         if (error) {
           return reject(error)
         }
 
-        return resolve(results)
+        if (this.relations) {
+          for (let relation of this.relations) {
+            if (relation.value === undefined) continue
+
+            relation.service.create(new relation.classType(relation.value, result.id))
+              .then(() => { 
+                result[relation.key] = relation.value
+                delete relation.value
+                return resolve(result)
+              })
+              .catch(error => {
+                this.delete(result.id)
+                return reject(error)
+              })
+          }
+        } else return resolve(result)
       })
     })
   }

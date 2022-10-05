@@ -6,7 +6,5 @@ export default class Progress extends Model {
     this.value = config.value
     this.date = config.date
     this.type = config.type
-    // user
-    // exercise
   } 
 }
