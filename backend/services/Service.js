@@ -82,6 +82,18 @@ export default class Service {
     })
   }
 
+  readAllLike(property, value, select = '*') {
+    return new Promise((resolve, reject) => {
+      this.connection.query(`select ${select} from ${this.table} where ${property}=${value}`, (error, results) => {
+        if (error || !results.length) {
+          return reject(error)
+        }
+
+        return resolve(results)
+      })
+    })
+  }
+
   update(id, object) {
     return new Promise((resolve, reject) => {
       let setString = ''

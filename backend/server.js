@@ -4,6 +4,7 @@ import exerciseRouter from './routes/exerciseRouter.js'
 import planRouter from './routes/planRouter.js'
 import progressRouter from './routes/progressRouter.js'
 import workoutRouter from './routes/workoutRouter.js'
+import statisticsRouter from './routes/statisticsRouter.js'
 
 const app = express()
 const port = 3000
@@ -17,4 +18,5 @@ app.listen(port, () => {
   app.use('/plans', planRouter)
   app.use('/progresses', progressRouter)
   app.use('/workouts', workoutRouter)
+  app.use('/statistics', statisticsRouter)
  })
