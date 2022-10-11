@@ -1,13 +1,17 @@
-import {EmbeddedViewRef, TemplateRef, Type} from '@angular/core';
-import {Subject} from 'rxjs';
-import {OverlayRef} from '@angular/cdk/overlay';
+import { EmbeddedViewRef, TemplateRef, Type } from '@angular/core';
+import { Subject } from 'rxjs';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 export interface PopoverCloseEvent {
   type: 'backdropClick' | 'close';
   data: any;
 }
 
-export type PopoverContent = TemplateRef<any> | Type<any> | string | EmbeddedViewRef<any>;
+export type PopoverContent =
+  | TemplateRef<any>
+  | Type<any>
+  | string
+  | EmbeddedViewRef<any>;
 
 export class PopoverReference {
   private afterClosed = new Subject<PopoverCloseEvent>();
@@ -29,8 +33,14 @@ export class PopoverReference {
   }
 
   private _close(type: PopoverCloseEvent['type'], data?: any) {
-    if (type === 'backdropClick') { data['goBack'] = true}
-    if (data && data['goBack'] && window.location.hash.indexOf('#dialog') !== -1) {
+    if (type === 'backdropClick') {
+      data['goBack'] = true;
+    }
+    if (
+      data &&
+      data['goBack'] &&
+      window.location.hash.indexOf('#dialog') !== -1
+    ) {
       history.go(-1);
     }
 
@@ -38,7 +48,7 @@ export class PopoverReference {
 
     this.afterClosed.next({
       type,
-      data
+      data,
     });
     this.afterClosed.complete();
   }

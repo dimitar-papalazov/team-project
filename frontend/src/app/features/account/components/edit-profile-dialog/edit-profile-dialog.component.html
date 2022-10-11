@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Edit profile information</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>First name</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Last name</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="justify-content: center">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="cancel()" cdkFocusInitial>Save</button>
+</div>

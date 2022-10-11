@@ -1,0 +1,49 @@
+:host {
+  margin: 10px 10px;
+  padding: 15px 10px;
+  color: rgb(192 195 196);
+  display: inline-block;
+  text-align: center;
+
+  .pie {
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 50%;
+  }
+
+  .hole {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #fff;
+    display: inline-block;
+  }
+
+  .body {
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: 25px 25px;
+    grid-row-gap: 10px;
+    grid-column-gap: 7px;
+    margin: 10px 5px 10px 5px;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .percents {
+    font-size: larger;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

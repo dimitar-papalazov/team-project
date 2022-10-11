@@ -1,10 +1,10 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {PopoverContent, PopoverReference} from './popover-ref';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { PopoverContent, PopoverReference } from './popover-ref';
 
 @Component({
   selector: 'app-popover',
   templateUrl: './popover.component.html',
-  styleUrls: ['./popover.component.scss']
+  styleUrls: ['./popover.component.scss'],
 })
 export class PopoverComponent implements OnInit {
   renderMethod: 'template' | 'component' | 'text' = 'component';
@@ -14,9 +14,7 @@ export class PopoverComponent implements OnInit {
   content: PopoverContent;
   context: any;
 
-  constructor(
-    private popoverReference: PopoverReference,
-  ) { }
+  constructor(private popoverReference: PopoverReference) {}
 
   ngOnInit() {
     this.title = this.popoverReference.title;
@@ -35,7 +33,7 @@ export class PopoverComponent implements OnInit {
       this.renderMethod = 'template';
       this.context = {
         close: this.popoverReference.close.bind(this.popoverReference),
-        data: this.popoverReference.data
+        data: this.popoverReference.data,
       };
     }
   }

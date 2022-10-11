@@ -1,0 +1,13 @@
+<h4>{{ title }}</h4>
+<div>
+  <div class="body" [style]="repeat">
+    <div *ngFor="let val of data; index as i" class="percents">
+      {{ val.value }}%
+    </div>
+    <div class="wrapper" *ngFor="let val of data; index as i">
+      <div [ngStyle]="{ color: colors[i] }">&#9632;</div>
+      <p>{{ val.title }}</p>
+    </div>
+  </div>
+  <div class="pie" [style]="background"></div>
+</div>
