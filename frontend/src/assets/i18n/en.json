@@ -19,5 +19,13 @@
 	"Account" : "Account",
 	"Log out" : "Log out",
 	"Privacy policy" : "Privacy policy",
-	"Search" : "Search"
+	"Search" : "Search",
+	"Video": "Video",
+	"Sets" : "Sets",
+	"Goal reps" : "Goal reps",
+	"Goal time" : "Goal time",
+	"Goal weight": "Goal weight",
+	"Goal distance": "Goal distance",
+	"Running" : "Running",
+	"Edit": "Edit"
 }

@@ -5,10 +5,12 @@ import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { WorkoutsComponent } from "./workouts.component";
 import { WorkoutsService } from "./workouts.service";
+import { WorkoutsCardComponent } from './workouts-card/workouts-card.component';
+import { ExercisesModule } from "../exercises/exercises.module";
 
 const routes: Routes = [
     {
-        "path": "",
+        "path": "workoutsPage",
         "component": WorkoutsComponent
     }
 ];
@@ -19,10 +21,12 @@ const routes: Routes = [
         CommonModule,
         RouterModule.forChild(routes),
         SharedModule,
+        ExercisesModule
     ], exports: [
         RouterModule
     ], declarations: [
-        WorkoutsComponent
+        WorkoutsComponent,
+        WorkoutsCardComponent
     ], providers: [
         WorkoutsService
     ]

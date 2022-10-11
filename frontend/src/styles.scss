@@ -146,6 +146,14 @@ html,body{
     }
 }
 
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+    color: #8aff88;
+}
+
+mat-button{
+    color: #8aff88;
+}
+
 mat-checkbox{
     .mat-checkbox-inner-container {
         width: 12px;
@@ -224,4 +232,8 @@ a.mat-list-item.active, a.mat-list-item.active:hover, a.mat-list-item.active:foc
 
 .mat-menu-item{
     color: rgba(225, 225, 225, 0.87);
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #8aff88;
 }

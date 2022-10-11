@@ -5,10 +5,11 @@ import { CoreModule } from "src/app/core/core.module";
 import { SharedModule } from "src/app/shared/shared.module";
 import { ExcerciseService } from "./excercises.service";
 import { ExercisesComponent } from "./exercises.component";
+import { ExercisesCardComponent } from './exercises-card/exercises-card.component';
 
 const routes: Routes = [
     {
-        "path": "",
+        "path": "exercisesPage",
         "component": ExercisesComponent
     }
 ];
@@ -20,9 +21,12 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         SharedModule,
     ], exports: [
-        RouterModule
+        RouterModule,
+        ExercisesComponent,
+        ExercisesCardComponent
     ], declarations: [
-        ExercisesComponent
+        ExercisesComponent,
+        ExercisesCardComponent
     ], providers: [
         ExcerciseService
     ]

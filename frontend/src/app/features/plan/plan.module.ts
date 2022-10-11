@@ -8,7 +8,7 @@ import { PlanService } from "./plan.service";
 
 const routes: Routes = [
     {
-        "path": "",
+        "path": "planPage",
         "component": PlanComponent
     }
 ];
