@@ -17,8 +17,12 @@
     font-size: 50px;
 }
 
-.plusCard{
+.plusCard, .expandButton{
     cursor: pointer;
+}
+
+.expandButton{
+    color: white;
 }
 
 .addCard{
@@ -39,4 +43,5 @@
 .flexWrapper{
     display: flex;
     justify-content: space-between;
+    align-items: center!important;
 }

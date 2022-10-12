@@ -41,10 +41,10 @@
           : 'bigToolbar'
       " fxLayout="row" fxLayoutAlign="space-between center">
       <div *ngIf="!(responsiveListenerService.isHandset$ | async)" class="fld ml-4">
-        <div class="right">
+        <!-- <div class="right">
           <input class="searchbox" (keydown.enter)="keyPress($event)" type="text"
             placeholder="{{ 'Search' | translate }}" />
-        </div>
+        </div> -->
       </div>
       <mat-icon *ngIf="
           !(responsiveListenerService.isHandset$ | async) &&

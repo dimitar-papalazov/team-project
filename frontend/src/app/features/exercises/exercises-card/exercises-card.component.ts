@@ -14,6 +14,9 @@ export class ExercisesCardComponent implements OnInit {
   @Input() public hasEdit: boolean;
   @Input() public hasRemove: boolean;
   @Input() public parenWorkoutId : number;
+  @Input() public planView: boolean;
+  @Input() public workoutView: boolean;
+  @Input() public parentWorkout: number;
 
   constructor(public workoutService: WorkoutsService,
     private editExerciseDialogService: EditExerciseDialogService) { }
@@ -22,11 +25,10 @@ export class ExercisesCardComponent implements OnInit {
   }
 
   removeExerciseFromWorkout(){
-
+    
   }
 
   editExercise(){
-    console.log(this.exercise)
     this.editExerciseDialogService.openDialog(this.exercise, true);
   }
 }

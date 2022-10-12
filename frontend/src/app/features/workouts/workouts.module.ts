@@ -7,6 +7,8 @@ import { WorkoutsComponent } from "./workouts.component";
 import { WorkoutsService } from "./workouts.service";
 import { WorkoutsCardComponent } from './workouts-card/workouts-card.component';
 import { ExercisesModule } from "../exercises/exercises.module";
+import { AddExcercisesToWorkoutService } from "./add-exercise-to-workout-dialog/service/add-exercise-workout-dialog.service";
+import { AddExcercisesToWorkoutComponent } from "./add-exercise-to-workout-dialog/add-exercise-workout-dialog.component";
 
 const routes: Routes = [
     {
@@ -23,12 +25,16 @@ const routes: Routes = [
         SharedModule,
         ExercisesModule
     ], exports: [
-        RouterModule
+        RouterModule,
+        WorkoutsCardComponent,
+        WorkoutsComponent
     ], declarations: [
         WorkoutsComponent,
-        WorkoutsCardComponent
+        WorkoutsCardComponent,
+        AddExcercisesToWorkoutComponent
     ], providers: [
-        WorkoutsService
+        WorkoutsService,
+        AddExcercisesToWorkoutService
     ]
 })
 

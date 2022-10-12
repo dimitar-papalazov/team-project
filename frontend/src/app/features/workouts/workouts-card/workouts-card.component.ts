@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
+import { AddExcercisesToWorkoutService } from '../add-exercise-to-workout-dialog/service/add-exercise-workout-dialog.service';
 import { Workout } from '../models/workout';
 import { WorkoutsService } from '../workouts.service';
 
@@ -11,10 +13,18 @@ import { WorkoutsService } from '../workouts.service';
 export class WorkoutsCardComponent implements OnInit {
 
   @Input() workout: Workout;
+  @Input() hasEdit;
+  @Input() hasExpand;
+  @Input() planView;
   editIcon = "fa fa-edit"
   plusIcon = "fa fa-plus"
+  expandButton = "fa fa-caret-down"
+  unexpandButton = "fa fa-caret-up"
+  expanded = new BehaviorSubject<boolean>(false);
 
-  constructor(public responsiveListenerService: ResponsiveListener, public workoutService: WorkoutsService) { }
+  constructor(public responsiveListenerService: ResponsiveListener, 
+    public workoutService: WorkoutsService,
+    public addExcerciseToWorkoutDialogService: AddExcercisesToWorkoutService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +35,14 @@ export class WorkoutsCardComponent implements OnInit {
   }
 
   addExcercisesToWorkout(){
+    this.addExcerciseToWorkoutDialogService.openDialog(1, false)
+  }
 
+  removeExcerciseFromWorkout(){
+
+  }
+
+  toggleExpand(){
+    this.expanded.next(!this.expanded.value)
   }
 }

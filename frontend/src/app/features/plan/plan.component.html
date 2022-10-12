@@ -1,0 +1,33 @@
+<div class="cardContent mx-4 p-4">
+
+    <ng-container *ngFor="let day of days">
+        <div class="flexWrapper mx-3">
+            <div class="workoutTitle mb-3">{{day}}</div>
+            <i [class]="plusIcon" class="plusIcon mb-3" aria-hidden="true"> </i>
+        </div>
+        <div class="row workoutsRow mx-0 mb-5">
+
+
+        <!-- <ng-container *ngFor="let exercise of exercises | async">
+            <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
+            <app-exercises-card [exercise]='exercise'></app-exercises-card>
+            </div>
+        </ng-container> -->
+
+        <ng-container>
+            <div class="col-12 px-0">
+            <app-workouts-card [planView]="true" [hasEdit]="false" [hasExpand]="true"></app-workouts-card>
+            </div>
+        </ng-container>
+
+
+        <ng-container *ngIf="workoutService.editMode.value" (click)="addExcercisesToWorkout()">
+            <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0 plusCard" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
+            <mat-card class="addCard">
+                <i [class]="plusIcon" class="plusIcon" aria-hidden="true"> </i>
+            </mat-card>
+            </div>
+        </ng-container>
+        </div>
+    </ng-container>
+  </div>
