@@ -25,6 +25,11 @@
           <app-exercises-card [hasEdit]='false' [hasRemove]="true"></app-exercises-card>
         </div>
       </ng-container>
+      <ng-container>
+        <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
+          <app-exercises-card [hasEdit]='false' [hasRemove]="true"></app-exercises-card>
+        </div>
+      </ng-container>
       <ng-container *ngIf="workoutService.editMode.value" (click)="addExcercisesToWorkout()">
         <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0 plusCard" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
           <mat-card class="addCard">

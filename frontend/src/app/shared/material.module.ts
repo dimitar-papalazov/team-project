@@ -73,7 +73,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
   ],
 })
 export class MaterialModule {}

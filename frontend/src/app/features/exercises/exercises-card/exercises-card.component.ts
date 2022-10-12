@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WorkoutsService } from '../../workouts/workouts.service';
+import { EditExerciseDialogService } from '../edit-exercise-dialog/service/edit-exercise-dialog.service';
 import { Exercise } from '../models/excercise';
 
 @Component({
@@ -14,7 +15,8 @@ export class ExercisesCardComponent implements OnInit {
   @Input() public hasRemove: boolean;
   @Input() public parenWorkoutId : number;
 
-  constructor(public workoutService: WorkoutsService) { }
+  constructor(public workoutService: WorkoutsService,
+    private editExerciseDialogService: EditExerciseDialogService) { }
 
   ngOnInit(): void {
   }
@@ -23,4 +25,8 @@ export class ExercisesCardComponent implements OnInit {
 
   }
 
+  editExercise(){
+    console.log(this.exercise)
+    this.editExerciseDialogService.openDialog(this.exercise, true);
+  }
 }

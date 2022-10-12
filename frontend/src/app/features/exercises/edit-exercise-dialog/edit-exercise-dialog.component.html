@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Edit exercise details</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Sets</mat-label>
+    <input matInput [(ngModel)]="sets"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Goal reps</mat-label>
+    <input matInput [(ngModel)]="goalReps"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Goal time</mat-label>
+    <input matInput [(ngModel)]="goalTime" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Goal weight</mat-label>
+    <input matInput [(ngModel)]="goalWeight" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Goal distance</mat-label>
+    <input matInput [(ngModel)]="goalDistance" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Video</mat-label>
+    <input matInput [(ngModel)]="video" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions style="justify-content: center">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
+</div>

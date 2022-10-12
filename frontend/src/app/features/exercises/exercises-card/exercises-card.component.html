@@ -43,13 +43,13 @@
         </div>
       </div>
       <div class="bottomBox">
-        <button color="primary" *ngIf="hasEdit" class="bottomButton mt-3" mat-button>
+        <button color="primary"  *ngIf="hasEdit"(click)="editExercise()" class="bottomButton mt-3" mat-button>
             <i class="fa fa-edit" class="mr-2" aria-hidden="true"> </i>
             {{ 'Edit' | translate}}
         </button>
-        <button color="primary" *ngIf="workoutService.editMode.value && hasRemove" (click)="removeExerciseFromWorkout()" class="bottomButton mt-3" mat-button>
+        <button color="primary" (click)="removeExerciseFromWorkout()" class="bottomButton mt-3" mat-button>
             <i class="fa fa-remove" class="mr-2" aria-hidden="true"> </i>
-            {{ 'Remove' | translate}}
+            {{ 'Delete' | translate}}
         </button>
     </div>
     </mat-card>

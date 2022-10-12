@@ -25,5 +25,12 @@
         <app-exercises-card [hasEdit]='true'></app-exercises-card>
       </div>
     </ng-container>
+    <ng-container>
+      <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0 plusCard" (click)="addExcercise()" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
+        <mat-card class="addCard">
+          <i [class]="plusIcon" class="plusIcon" aria-hidden="true"> </i>
+        </mat-card>
+      </div>
+    </ng-container>
   </div>
 </div>
