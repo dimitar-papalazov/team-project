@@ -52,13 +52,20 @@ export class AuthService {
   login(email: string, password: string){
     this.http.post<any>('http://localhost:3000/users/login',{email,password}).subscribe(user => {
       console.log(user)
+      var expirationDate = new Date();
+      this.localStorageService.setItem('auth_token_expiration', expirationDate.getDate() + 1);
+      this.localStorageService.setItem('currentUser',user);
+      this.router.navigate(['/auth/login']);
     })
   }
 
   register(registerData: registerData){
     this.http.post<any>('http://localhost:3000/users/',registerData).subscribe(user => {
       console.log(user)
-    this.planService.postPlan('First Plan', user.id).subscribe(plan => {console.log(plan)})
+      this.planService.postPlan('First Plan', user.id).subscribe(plan => {
+        console.log(plan);
+        this.router.navigate(['/auth/login']);
+      })
     })
   }
 

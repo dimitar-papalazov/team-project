@@ -28,7 +28,7 @@ export class ExercisesComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle(this.translateService.instant('Exercises'))
     this.loaderService.display(true);
-    this.exerciseService.getExcercises().subscribe(exercises => {
+    this.exerciseService.getExercises().subscribe(exercises => {
       this.exercises.next(exercises);
       this.loaderService.display(false);
     })

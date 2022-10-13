@@ -25,7 +25,7 @@ export class PlanService {
   }
 
   getPlan(planId: string) {
-    return this.http.get('http://localhost:3000/plans/planId='+planId).pipe(map(data => {
+    return this.http.get('http://localhost:3000/plans/'+planId).pipe(map(data => {
         return data;
     }));
   }
@@ -37,13 +37,13 @@ export class PlanService {
   }
 
   putPlan(plan: Plan): any{
-    return this.http.put<any>('http://localhost:3000/plans',plan).pipe(map(data => {
+    return this.http.put<any>('http://localhost:3000/plans/'+plan.id,plan).pipe(map(data => {
         return data;
     }));
   }
 
   deletePlan(planId: number): any{
-    return this.http.delete<any>('http://localhost:3000/plans/planId='+planId).pipe(map(data => {
+    return this.http.delete<any>('http://localhost:3000/plans/'+planId).pipe(map(data => {
         return data;
     }));
   }
