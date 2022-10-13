@@ -55,7 +55,7 @@ export class AuthService {
       var expirationDate = new Date();
       this.localStorageService.setItem('auth_token_expiration', expirationDate.getDate() + 1);
       this.localStorageService.setItem('currentUser',user);
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/dashboard']);
     })
   }
 
