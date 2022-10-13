@@ -3,7 +3,7 @@ import UserController from '../controllers/UserController.js'
 
 const userRouter = express.Router()
 const userController = new UserController()
-userRouter.get('/login', (req, res) => { userController.login(req, res) })
+userRouter.post('/login', (req, res) => { userController.login(req, res) })
 // userRouter.get('/:id', (req, res) => { userController.read(req, res) })
 userRouter.get('/', (req, res) => { userController.readAll(req, res) })
 userRouter.post('/', (req, res) => { userController.create(req, res) })

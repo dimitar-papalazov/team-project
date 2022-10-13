@@ -19,6 +19,7 @@ import { AccountComponent } from './features/account/account.component';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { PlanModule } from './features/plan/plan.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
     SharedModule,
     CoreModule,
+    PlanModule
   ],
   exports: [LoaderComponent],
   bootstrap: [AppComponent],

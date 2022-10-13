@@ -7,6 +7,7 @@ import { socialLogins } from '../enums/social-logins.enum';
 import { LocalStorageService } from './local-storage.service';
 import { User } from '../models/user';
 import {registerData } from '../models/register';
+import { PlanService } from 'src/app/features/plan/plan.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class AuthService {
     public router: Router,
     private snackbarService: SnackbarService,
     private activatedRoute: ActivatedRoute,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private planService: PlanService
   ) {
   }
 
@@ -47,15 +49,16 @@ export class AuthService {
     this.localStorageService.setItem('currentUser', user);
   }
 
-  login(username: string, password: string){
-    this.http.post<any>('http://localhost:3000/users/login',{username,password}).subscribe(user => {
+  login(email: string, password: string){
+    this.http.post<any>('http://localhost:3000/users/login',{email,password}).subscribe(user => {
       console.log(user)
     })
   }
 
   register(registerData: registerData){
-    this.http.post<any>('http://localhost:4200/users',registerData).subscribe(user => {
+    this.http.post<any>('http://localhost:3000/users/',registerData).subscribe(user => {
       console.log(user)
+    this.planService.postPlan('First Plan', user.id).subscribe(plan => {console.log(plan)})
     })
   }
 

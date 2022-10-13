@@ -27,12 +27,14 @@ export default class Service {
         }
       }
 
-      keys = keys.toString()
-      values = values.toString()
-
+      // keys = keys.toString()
+      // values = values.toString()
+      console.log(dto)
+      console.log('keys', keys, 'values', values, this.table)
       this.connection.query(`insert into ${this.table} (${keys}) values (${values});`,
         (error, results) => {
           if (error) {
+            console.log(this.table, 'before reject error')
             return reject(error)
           }
 
@@ -40,19 +42,27 @@ export default class Service {
             if (this.relations) {
               for (let relation of this.relations) {
                 relation.service.create(new relation.classType(relation.value, result.id))
-                  .then(() => { 
+                  .then(() => {
                     result[relation.key] = relation.value
                     delete relation.value
+                    console.log(this.table, 'before resolve result both')
                     return resolve(result)
                   })
                   .catch(error => {
                     this.delete(result.id)
+                    console.log(this.table, 'before reject both')
                     return reject(error)
                   })
               }
-            } else return resolve(result)
+            } else {
+              console.log(this.table, 'before resolve alone')
+              return resolve(result)
+            }
           })
-            .catch(error => reject(error))
+            .catch(error => {
+              console.log(this.table, 'before reject read')
+              return reject(error)
+            })
         })
     })
   }
@@ -131,7 +141,7 @@ export default class Service {
             if (relation.value === undefined) continue
 
             relation.service.create(new relation.classType(relation.value, result.id))
-              .then(() => { 
+              .then(() => {
                 result[relation.key] = relation.value
                 delete relation.value
                 return resolve(result)

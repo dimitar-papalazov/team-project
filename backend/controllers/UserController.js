@@ -9,8 +9,8 @@ export default class UserController extends Controller {
   }
 
   login(request, response) {
-    const { username, password } = request.query
-    this.service.login(username, password)
+    const { email, password } = request.body
+    this.service.login(email, password)
       .then(result => { response.status(200).send(result) })
       .catch(error => { response.status(404).send({ message: error === null ? 'Not found' : error }) })
   }

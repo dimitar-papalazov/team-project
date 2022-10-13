@@ -14,7 +14,7 @@ export class PlanService {
 
   getPlans(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:4200/Plan').pipe(map(data => {
+    return this.http.get<any>('http://localhost:3000/plans').pipe(map(data => {
         if(keyword){
             return data.filter((plan: Plan) => 
                 plan.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
@@ -25,25 +25,25 @@ export class PlanService {
   }
 
   getPlan(planId: string) {
-    return this.http.get('http://localhost:4200/Plan/planId='+planId).pipe(map(data => {
+    return this.http.get('http://localhost:3000/plans/planId='+planId).pipe(map(data => {
         return data;
     }));
   }
 
-  postWorkout(plan: Plan): any{
-    return this.http.post<any>('http://localhost:4200/Plan',plan).pipe(map(data => {
+  postPlan(name: string, user_id: number): any{
+    return this.http.post<any>('http://localhost:3000/plans',{name, user_id}).pipe(map(data => {
         return data;
     }));
   }
 
-  putWorkout(plan: Plan): any{
-    return this.http.put<any>('http://localhost:4200/Plan',plan).pipe(map(data => {
+  putPlan(plan: Plan): any{
+    return this.http.put<any>('http://localhost:3000/plans',plan).pipe(map(data => {
         return data;
     }));
   }
 
-  deleteWorkout(planId: number): any{
-    return this.http.delete<any>('http://localhost:4200/Plan/planId='+planId).pipe(map(data => {
+  deletePlan(planId: number): any{
+    return this.http.delete<any>('http://localhost:3000/plans/planId='+planId).pipe(map(data => {
         return data;
     }));
   }

@@ -1,10 +1,11 @@
 import Model from './Model.js'
 
 export default class Plan extends Model {
-  constructor(name, workouts, user) {
+  constructor(config) {
     super()
     this.TAG = `[ Plan ]`
-    this.name = name
+    this.name = config.name
+    this.user_id = config.user_id
     // workouts
     // user
   }

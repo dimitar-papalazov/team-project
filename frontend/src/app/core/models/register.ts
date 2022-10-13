@@ -9,6 +9,7 @@ export class registerData{
     surname: string;
     username: string;
     email: string;
+    password: string;
     height?: number;
     weight?: number;
     age?: number;

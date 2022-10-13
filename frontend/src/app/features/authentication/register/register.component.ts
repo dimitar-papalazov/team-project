@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { registerData } from 'src/app/core/models/register'
 
 @Component({
   selector: 'app-register',
@@ -33,5 +34,16 @@ export class RegisterComponent {
     way === 'forward' ? this.step += 1 : this.step -= 1;
   }
 
-  register(){}
+  register() {
+    if (this.multiStepForm.valid) {
+      let registerDataModel = new registerData()
+      registerDataModel.name = this.multiStepForm.get('userForm').value['name']
+      registerDataModel.email = this.multiStepForm.get('userForm').value['email']
+      registerDataModel.password = this.multiStepForm.get('userForm').value['password']
+      registerDataModel.age = this.multiStepForm.get('healthDataForm').value['age']
+      registerDataModel.weight = this.multiStepForm.get('healthDataForm').value['weight']
+      registerDataModel.height = this.multiStepForm.get('healthDataForm').value['height']
+      this.authService.register(registerDataModel)
+    }
+  }
 }

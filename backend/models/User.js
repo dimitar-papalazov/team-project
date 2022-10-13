@@ -7,8 +7,6 @@ export default class User extends Model {
     super()
     this.TAG = `[ User ]`
     this.name = config.name
-    this.surname = config.surname
-    this.username = config.username
     this.email = config.email
     this.password = User.hashPassword(config.password)
     this.height = config.height === undefined ? null : config.height
@@ -24,8 +22,6 @@ export default class User extends Model {
   dto() {
     return {
       name: `'${this.name}'`,
-      surname: `'${this.surname}'`,
-      username: `'${this.username}'`,
       password: `'${this.password}'`,
       email: `'${this.email}'`,
       height: this.height === null ? 'NULL' : this.height.toString(),

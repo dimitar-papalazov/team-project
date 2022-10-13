@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import userRouter from './routes/userRouter.js'
 import exerciseRouter from './routes/exerciseRouter.js'
 import planRouter from './routes/planRouter.js'
@@ -7,6 +8,7 @@ import workoutRouter from './routes/workoutRouter.js'
 import statisticsRouter from './routes/statisticsRouter.js'
 
 const app = express()
+app.use(cors())
 const port = 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
