@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { socialLogins } from '../enums/social-logins.enum';
 import { LocalStorageService } from './local-storage.service';
+import { User } from '../models/user';
+import {registerData } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +48,15 @@ export class AuthService {
   }
 
   login(username: string, password: string){
-  
+    this.http.post<any>('http://localhost:3000/users/login',{username,password}).subscribe(user => {
+      console.log(user)
+    })
   }
 
-  register(email: string){
-
+  register(registerData: registerData){
+    this.http.post<any>('http://localhost:4200/users',registerData).subscribe(user => {
+      console.log(user)
+    })
   }
 
 }
