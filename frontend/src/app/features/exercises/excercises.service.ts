@@ -11,38 +11,38 @@ export class ExcerciseService {
 
   constructor(private http: HttpClient) {}
 
-  getExcercises(keyword? : string): Observable<any> {
+  getExercises(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:4200/Excercises').pipe(map(data => {
+    return this.http.get<any>('http://localhost:4200/exercises').pipe(map(data => {
         if(keyword){
-            return data.filter((excercise: Exercise) => 
-                excercise.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
+            return data.filter((exercises: Exercise) => 
+                exercises.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
             )
         }
         return data;
     }));
   }
 
-  getExcercise(exerciseId: string) {
-    return this.http.get('http://localhost:4200/Excercise/excerciseId='+exerciseId).pipe(map(data => {
+  getExercise(exerciseId: string) {
+    return this.http.get('http://localhost:4200/exercises/'+exerciseId).pipe(map(data => {
         return data;
     }));
   }
 
-  postExcercise(exercise: Exercise): any{
-    return this.http.post<any>('http://localhost:4200/Excercise',exercise).pipe(map(data => {
+  postExercise(name: string, sets: number, goal_reps: number, goal_time: number, goal_weight: number, goal_distance: number, url: string, user_id: number, workout_id: number): any{
+    return this.http.post<any>('http://localhost:4200/exercises',{name,sets,goal_reps,goal_time,goal_weight,goal_distance,url,user_id,workout_id}).pipe(map(data => {
         return data;
     }));
   }
 
-  putExcercise(exercise: Exercise): any{
-    return this.http.put<any>('http://localhost:4200/Excercise',exercise).pipe(map(data => {
+  putExercise(exercise: Exercise): any{
+    return this.http.put<any>('http://localhost:4200/exercises',exercise).pipe(map(data => {
         return data;
     }));
   }
 
-  deleteExcercise(exerciseId: number): any{
-    return this.http.delete<any>('http://localhost:4200/Excercise/excerciseId='+exerciseId).pipe(map(data => {
+  deleteexercises(exerciseId: number): any{
+    return this.http.delete<any>('http://localhost:4200/exercises/'+exerciseId).pipe(map(data => {
         return data;
     }));
   }
