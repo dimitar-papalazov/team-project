@@ -14,7 +14,7 @@ export class WorkoutsService {
 
   constructor(private http: HttpClient) {}
 
-  getworkouts(keyword? : string): Observable<any> {
+  getWorkouts(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
     return this.http.get<any>('http://localhost:3000/workouts').pipe(map(data => {
         if(keyword){
