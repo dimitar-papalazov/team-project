@@ -1,9 +1,9 @@
 import Model from './Model.js'
 
 export default class UsersPlans extends Model {
-  constructor(plan_id, user_id) {
+  constructor(user_id, plan_id) {
     super()
     this.plan_id = plan_id
-    this.exercise_id = user_id
+    this.user_id = user_id
   }
 }
