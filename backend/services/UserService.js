@@ -16,6 +16,7 @@ export default class UserService extends Service {
           return reject(error)
         }
 
+        delete results[0].password
         return resolve(results[0])
       })
     })
