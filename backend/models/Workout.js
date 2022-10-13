@@ -1,10 +1,12 @@
 import Model from './Model.js'
 
 export default class Workout extends Model {
-  constructor(name, exercises, user) {
+  constructor(config) {
     super()
     this.TAG = `[ Workout ]`
-    this.name = name
+    this.name = config.name
+    this.user_id = config.user_id
+    this.plan_id = config.plan_id
     // exercises
     // user
   }

@@ -8,7 +8,7 @@ export default class Model {
     
     for (let key of Object.keys(obj)) {
       if (obj[key] === undefined) obj[key] = `NULL`
-      else obj[key] = `${obj[key]}`
+      else obj[key] = typeof obj[key] === 'number' ? `${obj[key]}` : `'${obj[key]}'`
     }
 
     return { ...obj }
