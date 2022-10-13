@@ -53,8 +53,10 @@ export class AuthService {
     this.http.post<any>('http://localhost:3000/users/login',{email,password}).subscribe(user => {
       console.log(user)
       var expirationDate = new Date();
-      this.localStorageService.setItem('auth_token_expiration', expirationDate.getDate() + 1);
-      this.localStorageService.setItem('currentUser',user);
+      var day = 1000 * 60 * 60 * 24
+
+      this.localStorageService.setItem('auth_token_expiration', expirationDate.getTime() + day);
+      this.localStorageService.setItem('currentUser', user);
       this.router.navigate(['/dashboard']);
     })
   }

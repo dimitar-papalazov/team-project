@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
         let currentUser = this.localStorageService.getItem('currentUser');
 
-        let expiration = this.localStorageService.getItem('auth_expiration');
+        let expiration = this.localStorageService.getItem('auth_token_expiration');
         var now = new Date();
         var expirationDate = new Date(expiration)
 
