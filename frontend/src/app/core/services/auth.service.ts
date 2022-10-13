@@ -42,7 +42,7 @@ export class AuthService {
   logout() {
     this.localStorageService.clear()
     this.setUser(null);
-    this.router.navigate(['login']);
+    this.router.navigate(['/auth/login']);
   }
 
   setUser(user: any) {

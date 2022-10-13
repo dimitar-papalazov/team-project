@@ -5,9 +5,11 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/core/models/user';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { TitleService } from 'src/app/core/title.service';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
@@ -38,7 +40,9 @@ export class OverlayComponent implements OnInit {
     public titleService: TitleService,
     private changeDetector: ChangeDetectorRef,
     private localStorageService: LocalStorageService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {}
@@ -47,7 +51,9 @@ export class OverlayComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  logout() {}
+  logout() {
+    this.authService.logout()
+  }
 
   keyPress(event: any): void {
     const target = event.target as HTMLTextAreaElement;
