@@ -15,6 +15,7 @@ import { WorkoutsService } from './workouts.service';
 export class WorkoutsComponent implements OnInit {
 
   workouts = new BehaviorSubject<Workout[]>([]);
+  plusIcon = "fa fa-plus"
 
   constructor(private titleService: TitleService,
     private translateService: TranslateService,
