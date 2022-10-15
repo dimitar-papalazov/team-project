@@ -5,6 +5,7 @@ import { ExcerciseService } from '../../exercises/excercises.service';
 import { Exercise } from '../../exercises/models/excercise';
 import { Workout } from '../../workouts/models/workout';
 import { WorkoutsService } from '../../workouts/workouts.service';
+import { PlanService } from '../plan.service';
 import { AddWorkoutToPlanService } from './service/add-exercise-workout-dialog.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class AddWorkoutToPlanComponent implements OnInit {
     private readonly matDialogRef: MatDialogRef<AddWorkoutToPlanComponent>,
     private readonly editProfileDialogService: AddWorkoutToPlanService,
     private workoutService: WorkoutsService,
+    private planService: PlanService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -43,6 +45,8 @@ export class AddWorkoutToPlanComponent implements OnInit {
   }
 
   add(){
-    this.workoutService.addWorkoutToPlan(this.selectedWorkout.id, this.data.planId);
+    this.workoutService.addWorkoutToPlan(this.selectedWorkout.id, this.data.planId).subscribe(data => {
+      this.planService.plansChanges.emit()
+    })
   }
 }

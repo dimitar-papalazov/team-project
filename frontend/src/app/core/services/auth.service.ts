@@ -63,7 +63,6 @@ export class AuthService {
 
   register(registerData: registerData){
     this.http.post<any>('http://localhost:3000/users/',registerData).subscribe(user => {
-      console.log(user)
       this.planService.postPlan('First Plan', user.id).subscribe(plan => {
         console.log(plan);
         this.router.navigate(['/auth/login']);

@@ -47,7 +47,7 @@ export class ExcerciseService {
     }));
   }
   
-  addExerciseToWorkout(exerciseId: number, workoutId: number){
+  addExerciseToWorkout(exerciseId: number, workoutId: number): any{
 
   }
 }

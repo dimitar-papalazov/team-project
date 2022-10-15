@@ -2,7 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { Workout } from '../models/workout';
+import { WorkoutsService } from '../workouts.service';
 import { AddWorkoutDialogService } from './service/add-workout-dialog';
 
 @Component({
@@ -26,6 +28,8 @@ export class AddWorkoutDialogComponent implements OnInit {
   constructor(
     private readonly matDialogRef: MatDialogRef<AddWorkoutDialogComponent>,
     private readonly editProfileDialogService: AddWorkoutDialogService,
+    private workoutService: WorkoutsService,
+    private localStorageService: LocalStorageService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -38,6 +42,8 @@ export class AddWorkoutDialogComponent implements OnInit {
   }
 
   add(){
-
+    this.workoutService.postWorkout(this.workoutNameForm.value,this.localStorageService.getItem('user').id).subscribe(data => {
+      this.workoutService.workoutsChanges.emit()
+    })
   }
 }

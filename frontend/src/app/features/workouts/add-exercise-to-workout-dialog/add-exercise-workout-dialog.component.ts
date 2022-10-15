@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { ExcerciseService } from '../../exercises/excercises.service';
 import { Exercise } from '../../exercises/models/excercise';
+import { WorkoutsService } from '../workouts.service';
 import { AddExcercisesToWorkoutService } from './service/add-exercise-workout-dialog.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class AddExcercisesToWorkoutComponent implements OnInit {
     private readonly matDialogRef: MatDialogRef<AddExcercisesToWorkoutComponent>,
     private readonly editProfileDialogService: AddExcercisesToWorkoutService,
     private exerciseService: ExcerciseService,
+    private workoutService: WorkoutsService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -41,6 +43,8 @@ export class AddExcercisesToWorkoutComponent implements OnInit {
   }
 
   add(){
-    this.exerciseService.addExerciseToWorkout(this.selectedExercise.id, this.data.workoutId);
+    this.exerciseService.addExerciseToWorkout(this.selectedExercise.id, this.data.workoutId).subscribe(data => {
+      this.workoutService.workoutsChanges.emit()
+    })
   }
 }

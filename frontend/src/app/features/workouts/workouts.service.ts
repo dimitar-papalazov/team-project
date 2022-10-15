@@ -10,6 +10,8 @@ import { SearchService } from '../search/search.service';
 
 export class WorkoutsService {
 
+  workoutsChanges = new EventEmitter<any>();
+
   editMode = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
@@ -32,8 +34,8 @@ export class WorkoutsService {
     }));
   }
 
-  postWorkout(name: string, userId: number, planId: number): any{
-    return this.http.post<any>('http://localhost:3000/workouts',{name,userId,planId}).pipe(map(data => {
+  postWorkout(name: string, userId: number): any{
+    return this.http.post<any>('http://localhost:3000/workouts',{name,userId}).pipe(map(data => {
         return data;
     }));
   }
@@ -50,7 +52,7 @@ export class WorkoutsService {
     }));
   }
   
-  addWorkoutToPlan(workoutId: number, planId: number){
+  addWorkoutToPlan(workoutId: number, planId: number): any{
     
   }
 }

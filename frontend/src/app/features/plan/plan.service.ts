@@ -11,6 +11,7 @@ import { Plan } from './models/plan.model';
 export class PlanService {
 
   editMode = new BehaviorSubject<boolean>(false);
+  plansChanges = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
 
