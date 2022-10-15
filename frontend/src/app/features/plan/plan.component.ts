@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TitleService } from 'src/app/core/title.service';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
 import { WorkoutsService } from '../workouts/workouts.service';
+import { AddPlanDialogService } from './add-plan-dialog/service/add-plan-dialog';
 import { AddWorkoutToPlanService } from './add-workout-to-plan-dialog/service/add-exercise-workout-dialog.service';
 import { Plan } from './models/plan.model';
 
@@ -22,7 +23,8 @@ export class PlanComponent implements OnInit {
     private translateService: TranslateService,
     public workoutService: WorkoutsService,
     public responsiveListenerService: ResponsiveListener,
-    public addWorkoutToPlanDialogService: AddWorkoutToPlanService) { }
+    public addWorkoutToPlanDialogService: AddWorkoutToPlanService,
+    public addPlanService: AddPlanDialogService) { }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.translateService.instant('Plan'))
@@ -30,6 +32,10 @@ export class PlanComponent implements OnInit {
 
   addWorkoutToPlan(planId?: number){
     this.addWorkoutToPlanDialogService.openDialog(planId);
+  }
+
+  addPlan(){
+    this.addPlanService.openDialog()
   }
 
 }

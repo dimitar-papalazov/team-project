@@ -9,6 +9,8 @@ import { WorkoutsCardComponent } from './workouts-card/workouts-card.component';
 import { ExercisesModule } from "../exercises/exercises.module";
 import { AddExcercisesToWorkoutService } from "./add-exercise-to-workout-dialog/service/add-exercise-workout-dialog.service";
 import { AddExcercisesToWorkoutComponent } from "./add-exercise-to-workout-dialog/add-exercise-workout-dialog.component";
+import { AddWorkoutDialogService } from "./add-workout-dialog/service/add-workout-dialog";
+import { AddWorkoutDialogComponent } from "./add-workout-dialog/add-workout.component";
 
 const routes: Routes = [
     {
@@ -31,10 +33,12 @@ const routes: Routes = [
     ], declarations: [
         WorkoutsComponent,
         WorkoutsCardComponent,
-        AddExcercisesToWorkoutComponent
+        AddExcercisesToWorkoutComponent,
+        AddWorkoutDialogComponent
     ], providers: [
         WorkoutsService,
-        AddExcercisesToWorkoutService
+        AddExcercisesToWorkoutService,
+        AddWorkoutDialogService
     ]
 })
 

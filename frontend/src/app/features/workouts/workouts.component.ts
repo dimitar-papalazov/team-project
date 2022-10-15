@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TitleService } from 'src/app/core/title.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
+import { AddWorkoutDialogService } from './add-workout-dialog/service/add-workout-dialog';
 import { Workout } from './models/workout';
 import { WorkoutsService } from './workouts.service';
 
@@ -21,7 +22,8 @@ export class WorkoutsComponent implements OnInit {
     private translateService: TranslateService,
     private workoutService: WorkoutsService,
     private loaderService: LoaderService,
-    public responsiveListenerService: ResponsiveListener
+    public responsiveListenerService: ResponsiveListener,
+    public addWorkoutService: AddWorkoutDialogService
     ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class WorkoutsComponent implements OnInit {
       this.workouts.next(workouts);
       this.loaderService.display(false);
     })
+  }
+
+  addWorkout(){
+    this.addWorkoutService.openDialog()
   }
 
 }
