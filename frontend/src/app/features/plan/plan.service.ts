@@ -50,5 +50,9 @@ export class PlanService {
         return data;
     }));
   }
+
+  removeWorkoutFromPlan(planId: number, workoutId: number): any{
+
+  }
   
 }

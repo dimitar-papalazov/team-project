@@ -3,8 +3,11 @@
     <ng-container>
         <div class="flexWrapper mx-3">
             <div class="workoutTitle mb-3">Cardio plan</div>
+            <div class="flexWrapper">
             <!-- <i [class]="plusIcon" class="plusIcon mb-3" (click)="addWorkoutToPlan(plan.id)" aria-hidden="true"> </i> -->
-            <i [class]="plusIcon" class="plusIcon mb-3" (click)="addWorkoutToPlan()" aria-hidden="true"> </i>
+            <i [class]="plusIcon" class="plusIcon mb-3 mr-3" (click)="addWorkoutToPlan()" aria-hidden="true"> </i>
+            <i [class]="trashIcon" class="plusIcon mb-3" (click)="deletePlan()" aria-hidden="true"> </i>
+            </div>
         </div>
         <div class="row workoutsRow mx-0 mb-5">
             <div class="col-12 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">

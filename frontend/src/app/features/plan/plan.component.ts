@@ -19,6 +19,7 @@ export class PlanComponent implements OnInit, OnDestroy {
 
   editIcon = "fa fa-edit";
   plusIcon = "fa fa-plus";
+  trashIcon ="fa fa-trash";
   plans = new BehaviorSubject<Plan[]>([]);
   sub = new Subscription();
 
@@ -60,6 +61,12 @@ export class PlanComponent implements OnInit, OnDestroy {
 
   addPlan(){
     this.addPlanService.openDialog()
+  }
+
+  deletePlan(planId?: number){
+    this.plansService.deletePlan(planId).subscribe(()=>{
+      this.plansService.plansChanges.emit()
+    })
   }
 
 }

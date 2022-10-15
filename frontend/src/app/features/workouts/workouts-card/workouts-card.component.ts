@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
+import { PlanService } from '../../plan/plan.service';
 import { AddExcercisesToWorkoutService } from '../add-exercise-to-workout-dialog/service/add-exercise-workout-dialog.service';
 import { Workout } from '../models/workout';
 import { WorkoutsService } from '../workouts.service';
@@ -27,7 +28,8 @@ export class WorkoutsCardComponent implements OnInit {
 
   constructor(public responsiveListenerService: ResponsiveListener, 
     public workoutService: WorkoutsService,
-    public addExcerciseToWorkoutDialogService: AddExcercisesToWorkoutService) { }
+    public addExcerciseToWorkoutDialogService: AddExcercisesToWorkoutService,
+    private planService: PlanService) { }
 
   ngOnInit(): void {
   }
@@ -46,11 +48,19 @@ export class WorkoutsCardComponent implements OnInit {
 
   }
 
+  removeWorkoutFromPlan(){
+    this.planService.removeWorkoutFromPlan(this.workout.id,this.parentPlan.id).subscribe(()=>{
+      this.planService.plansChanges.emit()
+    })
+  }
+
   toggleExpand(){
     this.expanded.next(!this.expanded.value)
   }
 
   deleteWorkout(){
-
+    this.workoutService.deleteWorkout(this.workout.id).subscribe(()=>{
+      this.workoutService.workoutsChanges.emit()
+    })
   }
 }

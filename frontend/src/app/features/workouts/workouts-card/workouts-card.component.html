@@ -6,7 +6,7 @@
             <div class="flex" *ngIf="workoutService.editMode.value">
               <div class="cancelButton" (click)="editMode()">Cancel</div>
               <div class="editIcon">
-                <i [class]="deleteIcon" class="deleteButton" class="ml-3 mr-2" aria-hidden="true"> </i>
+                <i [class]="deleteIcon" class="deleteButton" (click)="deleteWorkout()" class="ml-3 mr-2" aria-hidden="true"> </i>
               </div>
             </div>
         </ng-container>
@@ -17,7 +17,7 @@
           </ng-container>
           <ng-container *ngIf="hasDelete == true">
             <div class="editIcon">
-              <i [class]="deleteIcon" class="deleteButton" class="ml-3 mr-2" aria-hidden="true"> </i>
+              <i [class]="deleteIcon" class="deleteButton" (click)="removeWorkoutFromPlan()" class="ml-3 mr-2" aria-hidden="true"> </i>
             </div>
         </ng-container>
        </div>
@@ -44,4 +44,3 @@
     </div>
   </div>
 
-  
