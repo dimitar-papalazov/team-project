@@ -1,4 +1,4 @@
-<div class="cardContent mx-4">
+<div class="cardContent mx-4 mb-3">
     <div class="row workoutsRow mx-0">
       <!-- <ng-container *ngFor="let exercise of exercises | async">
         <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
@@ -12,3 +12,8 @@
       </ng-container>
     </div>
   </div>
+  <ng-container *ngIf="workouts.value.length==0">
+    <div class="emptyCard mx-4">
+        You have no workouts.
+    </div>
+</ng-container>

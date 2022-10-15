@@ -14,3 +14,8 @@
     </ng-container>
 </div>
 <!-- </ng-container> -->
+<ng-container *ngIf="plans.value.length==0">
+    <div class="emptyCard mx-4">
+        You have no plans.
+    </div>
+</ng-container>
