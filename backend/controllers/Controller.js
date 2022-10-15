@@ -39,4 +39,17 @@ export default class Controller {
       .then(() => { response.status(200).send({ message: `Column with ${id} deleted!` }) })
       .catch(error => { response.status(404).send({ message: error === null ? 'Not found' : error }) })
   }
+
+  relations(_, response) {
+    if (!this.service.relations.length)
+      response.status(404).send({ message: 'No relations found'})
+    else response.status(200).send({ relations: this.service.relations })
+  }
+
+  addRelation(request, response) {
+    const {id, relationName, relationId } = request.body
+    this.service.addRelation(id, relationName, relationId)
+      .then(result => { response.status(201).send({ ...result }) })
+      .catch(error => { response.status(400).send({ message: error }) })
+  }
 }

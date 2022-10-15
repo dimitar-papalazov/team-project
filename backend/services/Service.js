@@ -158,4 +158,27 @@ export default class Service {
       })
     })
   }
+
+  addRelation(id, relationName, relationId) {
+    return new Promise((resolve, reject) => {
+      const relation = !this.relations.find(r => r.key === relationName)
+
+      if (!relation) 
+        return reject('Relation does not exist')
+
+      this.read(id)
+        .then(() => {
+          relation.service.create(new relation.classType(relationId, id))
+            .then(result => {
+              return resolve(result)
+            })
+            .catch(error => {
+              return reject(error)
+            })
+        })
+        .catch(() => {
+          return reject('Id does not exist')
+        })
+    })
+  }
 }
