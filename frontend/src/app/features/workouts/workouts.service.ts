@@ -1,4 +1,4 @@
-import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
+import { EventEmitter, Injectable, Input, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Workout } from './models/workout';
@@ -50,4 +50,7 @@ export class WorkoutsService {
     }));
   }
   
+  addWorkoutToPlan(workoutId: number, planId: number){
+    
+  }
 }

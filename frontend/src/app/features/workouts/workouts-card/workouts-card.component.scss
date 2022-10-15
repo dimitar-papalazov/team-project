@@ -8,7 +8,7 @@
     font-size: 20px;
 }
 
-.editIcon, .plusIcon{
+.editIcon, .plusIcon, .deleteButton{
     color: #8aff88;
     cursor: pointer;
 }
@@ -35,7 +35,7 @@
     min-height: 358px;
 }
 
-.cancelButton{
+.cancelButton, i{
     color: #8aff88;
     cursor: pointer;
 }
@@ -44,4 +44,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center!important;
+}
+
+.flex{
+    display: flex;
+
 }

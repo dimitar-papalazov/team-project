@@ -7,6 +7,9 @@ import { ExercisesModule } from "../exercises/exercises.module";
 import { WorkoutsModule } from "../workouts/workouts.module";
 import { PlanComponent } from "./plan.component";
 import { PlanService } from "./plan.service";
+import { PlanCardComponent } from './plan-card/plan-card.component';
+import { AddWorkoutToPlanService } from "./add-workout-to-plan-dialog/service/add-exercise-workout-dialog.service";
+import { AddWorkoutToPlanComponent } from "./add-workout-to-plan-dialog/add-workout-to-plan-dialog";
 
 const routes: Routes = [
     {
@@ -26,9 +29,12 @@ const routes: Routes = [
     ], exports: [
         RouterModule
     ], declarations: [
-        PlanComponent
+        PlanComponent,
+        PlanCardComponent,
+        AddWorkoutToPlanComponent
     ], providers: [
-        PlanService
+        PlanService,
+        AddWorkoutToPlanService
     ]
 })
 export class PlanModule {

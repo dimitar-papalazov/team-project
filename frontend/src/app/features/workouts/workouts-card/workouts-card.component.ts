@@ -16,10 +16,13 @@ export class WorkoutsCardComponent implements OnInit {
   @Input() hasEdit;
   @Input() hasExpand;
   @Input() planView;
+  @Input() hasDelete;
+  @Input() parentPlan;
   editIcon = "fa fa-edit"
   plusIcon = "fa fa-plus"
   expandButton = "fa fa-caret-down"
   unexpandButton = "fa fa-caret-up"
+  deleteIcon = "fa fa-trash"
   expanded = new BehaviorSubject<boolean>(false);
 
   constructor(public responsiveListenerService: ResponsiveListener, 
@@ -35,6 +38,7 @@ export class WorkoutsCardComponent implements OnInit {
   }
 
   addExcercisesToWorkout(){
+    // this.addExcerciseToWorkoutDialogService.openDialog(this.workout.id, false)
     this.addExcerciseToWorkoutDialogService.openDialog(1, false)
   }
 
@@ -44,5 +48,9 @@ export class WorkoutsCardComponent implements OnInit {
 
   toggleExpand(){
     this.expanded.next(!this.expanded.value)
+  }
+
+  deleteWorkout(){
+
   }
 }

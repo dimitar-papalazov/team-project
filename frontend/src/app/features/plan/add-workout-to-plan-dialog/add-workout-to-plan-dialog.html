@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Choose an exercise to add to workout</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
-    <mat-label>Choose exercise</mat-label>
-    <mat-select [(value)]="selectedExercise">
-      <mat-option *ngFor="let exercise of exercises" [value]="exercise.name">
-        {{exercise.name}}
+    <mat-label>Choose workout</mat-label>
+    <mat-select [(value)]="selectedWorkout">
+      <mat-option *ngFor="let workout of workouts" [value]="workout.name">
+        {{workout.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>

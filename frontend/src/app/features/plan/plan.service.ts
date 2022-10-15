@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { SearchService } from '../search/search.service';
 import { Plan } from './models/plan.model';
 
@@ -9,6 +9,8 @@ import { Plan } from './models/plan.model';
 })
 
 export class PlanService {
+
+  editMode = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 

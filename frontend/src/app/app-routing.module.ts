@@ -12,7 +12,7 @@ const routes: Routes = [
   },
 
   { path: '', component: OverlayComponent,
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
       children: [
 
       { path: '',   redirectTo: 'dashboard', pathMatch: 'full' },

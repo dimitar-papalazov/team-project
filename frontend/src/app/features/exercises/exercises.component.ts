@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { TitleService } from 'src/app/core/title.service';
@@ -15,6 +15,7 @@ import { Exercise } from './models/excercise';
 })
 export class ExercisesComponent implements OnInit {
 
+  @Input() parentWorkout;
   exercises = new BehaviorSubject<Exercise[]>([]);
   plusIcon = 'fa fa-plus';
 
