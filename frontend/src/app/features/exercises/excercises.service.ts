@@ -9,6 +9,8 @@ import { Exercise } from './models/excercise';
 
 export class ExcerciseService {
 
+  exerciseChanges = new EventEmitter<any>();
+
   constructor(private http: HttpClient) {}
 
   getExercises(keyword? : string): Observable<any> {
@@ -29,8 +31,8 @@ export class ExcerciseService {
     }));
   }
 
-  postExercise(name: string, sets: number, goal_reps: number, goal_time: number, goal_weight: number, goal_distance: number, url: string, user_id: number, workout_id: number): any{
-    return this.http.post<any>('http://localhost:4200/exercises',{name,sets,goal_reps,goal_time,goal_weight,goal_distance,url,user_id,workout_id}).pipe(map(data => {
+  postExercise(exercise: Exercise): any{
+    return this.http.post<any>('http://localhost:4200/exercises',{exercise}).pipe(map(data => {
         return data;
     }));
   }

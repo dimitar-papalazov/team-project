@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { ExcerciseService } from '../excercises.service';
 import { Exercise } from '../models/excercise';
 import { EditExerciseDialogService } from './service/edit-exercise-dialog.service';
 
@@ -24,6 +25,7 @@ export class EditExerciseDialogComponent implements OnInit {
   constructor(
     private readonly matDialogRef: MatDialogRef<EditExerciseDialogComponent>,
     private readonly editProfileDialogService: EditExerciseDialogService,
+    private exerciseService: ExcerciseService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -44,6 +46,14 @@ export class EditExerciseDialogComponent implements OnInit {
   }
 
   save(){
-
+    if(this.editMode){
+      this.exerciseService.putExercise(this.exercise).subscribe(data => {
+        this.exerciseService.exerciseChanges.emit()
+      })
+    }else{
+      this.exerciseService.postExercise(this.exercise).subscribe(data => {
+        this.exerciseService.exerciseChanges.emit()
+      })
+    }
   }
 }
