@@ -11,7 +11,7 @@
       <!-- <img *ngIf="(responsiveListenerService.isMediumDesktop$ | async)" src="../../../assets/media/m.svg" class="sidenav-logo-small"> -->
     </div>
     <mat-nav-list>
-      <a (click)="toggleSidenav()" class="menuItem mb-1" *ngFor="let item of menuItems" mat-list-item
+      <a class="menuItem mb-1" *ngFor="let item of menuItems" mat-list-item
         [routerLink]="'/' + item.route" routerLinkActive="active">
         <!-- <fa-icon [icon]="['fas', item.icon]" [ngClass]="(responsiveListenerService.isMediumDesktop$ | async) && !(responsiveListenerService.isHandset$ | async) ? 'fa-2xl' : 'mr-2'" matBadge={{this.badges[item.badge]}} matBadgeSize="small" matBadgeColor="warn" [matBadgeHidden]="!item.badge"></fa-icon> -->
         <i [class]="item.icon" class="mr-2" aria-hidden="true"> </i>
