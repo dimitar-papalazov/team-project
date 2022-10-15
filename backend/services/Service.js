@@ -6,6 +6,7 @@ export default class Service {
     this.table = table
     this.classType = classType
     this.relations = relations
+    this.columnName = `${this.classType.name.toLowerCase()}_id` 
   }
 
   create(object) {
@@ -59,13 +60,39 @@ export default class Service {
   }
 
   read(id) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       this.connection.query(`select * from ${this.table} where id=${id}`, (error, results) => {
         if (error || !results.length) {
           return reject(error)
         }
 
-        return resolve(results[0])
+        const result = results[0]
+
+        if (!this.relations.length)
+          return resolve(result)
+        
+        const id = result.id
+
+        this.relations.forEach(relation => {
+          result[relation.table] = []
+
+          try {
+              const items = await relation.service.readAllLike(this.columnName, id, relation.key)
+
+              items.forEach(item => {
+                try {
+                  const r = await this.relationService.read(item)
+                  result[relation.table].push(r)
+                } catch (err) {
+                  return reject(err)
+                }
+              })
+          } catch (e) {
+            return reject(e)
+          }
+        })
+
+        return resolve(result)
       })
     })
   }
