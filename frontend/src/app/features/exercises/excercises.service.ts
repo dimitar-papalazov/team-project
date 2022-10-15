@@ -43,13 +43,17 @@ export class ExcerciseService {
     }));
   }
 
-  deleteexercises(exerciseId: number): any{
+  deleteExercise(exerciseId: number): any{
     return this.http.delete<any>('http://localhost:4200/exercises/'+exerciseId).pipe(map(data => {
         return data;
     }));
   }
   
   addExerciseToWorkout(exerciseId: number, workoutId: number): any{
+
+  }
+
+  removeExerciseFromWorkout(exerciseId: number, workoutId: number): any{
 
   }
 }

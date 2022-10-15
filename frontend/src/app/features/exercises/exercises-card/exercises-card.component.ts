@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WorkoutsService } from '../../workouts/workouts.service';
 import { EditExerciseDialogService } from '../edit-exercise-dialog/service/edit-exercise-dialog.service';
+import { ExcerciseService } from '../excercises.service';
 import { Exercise } from '../models/excercise';
 
 @Component({
@@ -19,16 +20,25 @@ export class ExercisesCardComponent implements OnInit {
   @Input() public parentWorkout: number;
 
   constructor(public workoutService: WorkoutsService,
-    private editExerciseDialogService: EditExerciseDialogService) { }
+    private editExerciseDialogService: EditExerciseDialogService,
+    private exerciseService: ExcerciseService) { }
 
   ngOnInit(): void {
   }
 
   removeExerciseFromWorkout(){
-    
+    this.exerciseService.removeExerciseFromWorkout(this.exercise.id,this.parenWorkoutId).subscribe(data => {
+      this.workoutService.workoutsChanges.emit()
+    })
   }
 
   editExercise(){
     this.editExerciseDialogService.openDialog(this.exercise, true);
+  }
+
+  deleteExercise(){
+    this.exerciseService.deleteExercise(this.exercise.id).subscribe(data => {
+      this.exerciseService.exerciseChanges.emit()
+    })
   }
 }
