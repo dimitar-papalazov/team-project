@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { AddPlanDialogComponent } from '../add-plan.component';
+import { AddPlanDialogComponent } from '../add-plan-dialog.component';
 
 @Injectable()
 export class AddPlanDialogService {

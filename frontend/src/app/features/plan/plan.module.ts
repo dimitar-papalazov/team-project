@@ -11,7 +11,7 @@ import { PlanCardComponent } from './plan-card/plan-card.component';
 import { AddWorkoutToPlanService } from "./add-workout-to-plan-dialog/service/add-exercise-workout-dialog.service";
 import { AddWorkoutToPlanComponent } from "./add-workout-to-plan-dialog/add-workout-to-plan-dialog";
 import { AddPlanDialogService } from "./add-plan-dialog/service/add-plan-dialog";
-import { AddPlanDialogComponent } from "./add-plan-dialog/add-plan.component";
+import { AddPlanDialogComponent } from "./add-plan-dialog/add-plan-dialog.component";
 
 const routes: Routes = [
     {
