@@ -1,0 +1,81 @@
+:host {
+  text-align: center;
+  justify-content: center;
+  border: 1px solid var(--light-gray);
+  padding: 30px 20px;
+  color: rgb(192 195 196);
+  display: inline-block;
+  text-align: center;
+  border-radius: 5%;
+  background-color: rgb(0 0 0 / 79%);
+
+  h4 {
+    margin-bottom: 30px;
+  }
+
+  .css-chart {
+    border-bottom: 1px solid cornflowerblue;
+    height: var(--widget-size);
+    margin: 10px 10px;
+    padding: 15px 5px;
+    position: relative;
+    width: var(--widget-size);
+  }
+
+  .line-chart {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .data-point {
+    background-color: white;
+    border: 2px solid lightblue;
+    border-radius: 50%;
+    bottom: calc(var(--y) - 5px);
+    height: 9px;
+    left: calc(var(--x) - 7px);
+    position: absolute;
+    width: 9px;
+    z-index: 1;
+  }
+
+  .line-chart li:last-child .data-point {
+    left: calc(var(--x) - 12px);
+  }
+
+  .line-chart li:first-child .data-point {
+    left: calc(var(--x) - 4px);
+  }
+
+  .data-number {
+    bottom: calc(var(--y) - 4px);
+    height: 30px;
+    left: calc(var(--x) - 6px);
+    position: absolute;
+    width: 30px;
+    z-index: 2;
+  }
+
+  .line-chart li:last-child .data-number {
+    left: calc(var(--x) - 9px);
+  }
+
+  .line-segment {
+    background-color: rgb(12, 33, 72);
+    bottom: var(--y);
+    height: 3px;
+    left: var(--x);
+    position: absolute;
+    transform: rotate(calc(var(--angle) * 1deg));
+    transform-origin: left bottom;
+    width: calc(var(--hypotenuse) * 1px);
+  }
+
+  span {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: Verdana, sans-serif;
+    font-size: small;
+  }
+}

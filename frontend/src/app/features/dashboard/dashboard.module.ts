@@ -7,6 +7,8 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardService } from './dashboard.service';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { PieChartService } from './components/pie-chart/service/pie-chart.service';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { LineChartService } from './components/line-chart/service/line-chart.service';
 
 const routes: Routes = [
   {
@@ -23,7 +25,7 @@ const routes: Routes = [
     SharedModule,
   ],
   exports: [RouterModule],
-  declarations: [DashboardComponent, PieChartComponent],
-  providers: [DashboardService, PieChartService],
+  declarations: [DashboardComponent, PieChartComponent, LineChartComponent],
+  providers: [DashboardService, PieChartService, LineChartService],
 })
 export class DashboardModule {}

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TitleService } from 'src/app/core/title.service';
-import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
-import { menuItems } from '../overlay/configs/menuItems.config';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +8,10 @@ import { menuItems } from '../overlay/configs/menuItems.config';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  months: string[] = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
+
   dataOtherEvents: any = {
-    title: 'Exercises',
+    title: 'Workouts',
     data: [
       {
         title: 'Back',
@@ -27,6 +27,11 @@ export class DashboardComponent implements OnInit {
       },
     ],
     colors: ['#9d8abf', '#5e5373', '#2f2939'],
+  };
+
+  dataFluctuation: any = {
+    title: 'Fluctuation',
+    data: [19.7, -0.5, 3.4, -17.7, 3],
   };
 
   constructor(
