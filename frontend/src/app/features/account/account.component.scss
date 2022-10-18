@@ -28,3 +28,12 @@ img {
 .info{
   font-size: 18px;
 }
+
+@media(max-width: 767px){
+  .containerAccount{
+    flex-direction: column!important;
+  }
+  .info, .rightBlock{
+    align-items: center!important;
+  }
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { TitleService } from 'src/app/core/title.service';
+import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
 import { User } from '../../core/models/user';
 import { EditProfileDialogService } from './components/edit-profile-dialog/service/edit-profile-dialog.service';
 
@@ -16,7 +17,8 @@ export class AccountComponent implements OnInit {
   constructor(
     private titleService: TitleService,
     private localStorageService: LocalStorageService,
-    private editProfileDialogService: EditProfileDialogService
+    private editProfileDialogService: EditProfileDialogService,
+    public responsiveListenerService: ResponsiveListener
   ) {}
 
   ngOnInit(): void {

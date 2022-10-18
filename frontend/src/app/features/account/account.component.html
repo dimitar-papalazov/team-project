@@ -1,4 +1,4 @@
-<div class="col-6 containerAccount ml-4 p-4 px-5">
+<div class="col-lg-6 col-md-6 col-sm-12 containerAccount p-4 px-5" [class.ml-4]="!(responsiveListenerService.isHandset$ | async)">
 
   <div class="leftBlock">
     <img
@@ -7,7 +7,7 @@
     />
   </div>
 
-  <div class="rightBlock ml-4 py-2">
+  <div class="rightBlock ml-4 py-2" [class.ml-4]="!(responsiveListenerService.isHandset$ | async)" [class.mt-4]="(responsiveListenerService.isHandset$ | async)">
     <div class="info">
       <div class="name mb-3">Angela Sotirovska</div>
       <div class="email">angelasotirkata@gmail.com</div>
