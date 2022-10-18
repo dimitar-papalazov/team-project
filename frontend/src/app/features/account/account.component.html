@@ -9,8 +9,14 @@
 
   <div class="rightBlock ml-4 py-2" [class.ml-4]="!(responsiveListenerService.isHandset$ | async)" [class.mt-4]="(responsiveListenerService.isHandset$ | async)">
     <div class="info">
-      <div class="name mb-3">Angela Sotirovska</div>
+      <div class="name">Angela Sotirovska</div>
       <div class="email">angelasotirkata@gmail.com</div>
+    </div>
+
+    <div class="extraInfo mt-3">
+      <div class="infoDetails">Age: <div class="coloredInfo">23</div></div>
+      <div class="infoDetails">Weight: <div class="coloredInfo">50kg</div></div>
+      <div class="infoDetails">Height: <div class="coloredInfo">173cm</div></div>
     </div>
 
     <button class="button mt-4" mat-flat-button (click)="editProfile()">Edit profile</button>
