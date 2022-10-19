@@ -1,23 +1,23 @@
-<!-- <ng-container *ngFor="let plan of plans | async"> -->
+<ng-container *ngFor="let plan of plans | async">
 <div class="cardContent mx-4 p-4 mb-3">
     <ng-container>
         <div class="flexWrapper mx-3">
-            <div class="workoutTitle mb-3">Cardio plan</div>
+            <div class="workoutTitle mb-3">{{plan.name}}</div>
             <div class="flexWrapper">
             <!-- <i [class]="plusIcon" class="plusIcon mb-3" (click)="addWorkoutToPlan(plan.id)" aria-hidden="true"> </i> -->
             <i [class]="plusIcon" class="plusIcon mb-3 mr-3" (click)="addWorkoutToPlan()" aria-hidden="true"> </i>
-            <i [class]="trashIcon" class="plusIcon mb-3" (click)="deletePlan()" aria-hidden="true"> </i>
+            <i [class]="trashIcon" class="plusIcon mb-3" (click)="deletePlan(plan.id)" aria-hidden="true"> </i>
             </div>
         </div>
         <div class="row workoutsRow mx-0 mb-5">
             <div class="col-12 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
-                <app-plan-card></app-plan-card>
+                <app-plan-card [plan]=plan></app-plan-card>
             </div>
         </div>
     </ng-container>
 </div>
-<!-- </ng-container> -->
-<ng-container *ngIf="plans.value.length==0">
+</ng-container>
+<ng-container>
     <div class="emptyCard mx-4" (click)="addPlan()">
         Add new plan
     </div>

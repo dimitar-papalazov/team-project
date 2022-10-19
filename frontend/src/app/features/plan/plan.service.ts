@@ -17,7 +17,7 @@ export class PlanService {
 
   getPlans(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:3000/plans').pipe(map(data => {
+    return this.http.get<any>('http://localhost:3000/plans/user/1').pipe(map(data => { // ova treba da se smeni vo dinamicno id od localstorage
         if(keyword){
             return data.filter((plan: Plan) => 
                 plan.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())

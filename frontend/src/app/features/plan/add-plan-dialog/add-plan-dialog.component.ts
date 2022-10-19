@@ -33,9 +33,7 @@ export class AddPlanDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {
-    this.planName = this.data.planDialog;
-  }
+  ngOnInit(): void { }
 
   cancel(): void {
     this.matDialogRef.close();
