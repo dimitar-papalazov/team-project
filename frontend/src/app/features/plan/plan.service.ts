@@ -34,7 +34,8 @@ export class PlanService {
   }
 
   postPlan(name: string, user_id: number): any{
-    return this.http.post<any>('http://localhost:3000/plans',{name, user_id}).pipe(map(data => {
+    const workouts = []
+    return this.http.post<any>('http://localhost:3000/plans/',{name, workouts, user_id}).pipe(map(data => {
         return data;
     }));
   }

@@ -30,17 +30,12 @@ public class PlanServiceImplementation implements PlanService {
     @Override
     public Optional<Plan> create(PlanDto planDto) {
         List<Workout> workouts = new ArrayList<Workout>();
-        List<Member> members = new ArrayList<Member>();
 
         for (Long id: planDto.getWorkouts()) {
             workouts.add(this.workoutRepository.findById(id).get());
         }
 
-        for (Long id: planDto.getUsers()) {
-            members.add(this.userRepository.findById(id).get());
-        }
-
-        Plan plan = this.planRepository.save(new Plan(planDto.getName(), workouts, members));
+        Plan plan = this.planRepository.save(new Plan(planDto.getName(), workouts, this.userRepository.findById(planDto.getUser_id()).get()));
         return Optional.of(plan);
     }
 
@@ -76,6 +71,11 @@ public class PlanServiceImplementation implements PlanService {
 
         this.planRepository.delete(plan);
         return plan;
+    }
+
+    @Override
+    public List<Plan> getAllByMemberId(Long memberId) {
+        return planRepository.getAllByMember_Id(memberId);
     }
 
     @Override

@@ -4,13 +4,13 @@ export class RegisterResponseData {
 }
 
 export class registerData{
-    id: number;
     name: string;
-    surname: string;
-    username: string;
     email: string;
     password: string;
-    height?: number;
-    weight?: number;
-    age?: number;
+    height: number;
+    weight: number;
+    age: number;
+    exercises: [];
+    workouts: [];
+    progresses: [];
 }

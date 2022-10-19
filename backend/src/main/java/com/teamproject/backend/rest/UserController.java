@@ -1,6 +1,7 @@
 package com.teamproject.backend.rest;
 
 import com.teamproject.backend.model.Member;
+import com.teamproject.backend.model.dto.LoginDto;
 import com.teamproject.backend.model.dto.UserDto;
 import com.teamproject.backend.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -19,15 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Member> register(@RequestParam String name,
-                                           @RequestParam String email,
-                                           @RequestParam String password,
-                                           @RequestParam Integer age,
-                                           @RequestParam Float height,
-                                           @RequestParam Float weight) {
-        UserDto userDto = new UserDto(name, email, password, age, height, weight, new ArrayList<>(), new ArrayList<>(),
-                new ArrayList<>(), new ArrayList<>());
-
+    public ResponseEntity<Member> register(@RequestBody UserDto userDto) {
         try {
             Member member = this.userService.create(userDto).get();
             return ResponseEntity.ok().body(member);
@@ -37,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Member login(@RequestParam String email, @RequestParam String password) {
-        return this.userService.login(email, password);
+    public Member login(@RequestBody LoginDto loginDto) {
+        return this.userService.login(loginDto.getEmail(), loginDto.getPassword());
     }
 }

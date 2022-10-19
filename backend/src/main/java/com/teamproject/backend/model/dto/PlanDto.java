@@ -5,15 +5,15 @@ import java.util.List;
 public class PlanDto {
     private String name;
     private List<Long> workouts;
-    private List<Long> users;
+    private Long user_id;
 
     public PlanDto() {
     }
 
-    public PlanDto(String name, List<Long> workouts, List<Long> users) {
+    public PlanDto(String name, List<Long> workouts, Long user_id) {
         this.name = name;
         this.workouts = workouts;
-        this.users = users;
+        this.user_id = user_id;
     }
 
     public String getName() {
@@ -24,7 +24,7 @@ public class PlanDto {
         return workouts;
     }
 
-    public List<Long> getUsers() {
-        return users;
+    public Long getUser_id() {
+        return user_id;
     }
 }

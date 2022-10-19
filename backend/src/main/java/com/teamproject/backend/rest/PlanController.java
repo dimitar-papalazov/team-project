@@ -24,18 +24,9 @@ public class PlanController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Plan> create(@RequestParam String name,
-                                         @RequestParam Long userId) {
-        List<Long> users = new ArrayList<>();
-        users.add(userId);
-        PlanDto planDto = new PlanDto(name, new ArrayList<>(), users);
-
+    public ResponseEntity<Plan> create(@RequestBody PlanDto planDto) {
         try {
             Plan plan = this.planService.create(planDto).get();
-
-            for (Long id: planDto.getUsers()) {
-                this.userService.addPlan(id, plan);
-            }
 
             return ResponseEntity.ok().body(plan);
         } catch (Exception e) {
@@ -48,18 +39,13 @@ public class PlanController {
         return planService.read(id);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Plan> readByMemberId(@PathVariable Long id) {
+        return planService.getAllByMemberId(id);
+    }
+
     @DeleteMapping("/{id}")
     public Plan delete(@PathVariable Long id) {
         return planService.delete(id);
-    }
-
-    @PostMapping("/add-to-user")
-    public void addToUser(@RequestParam Long id, @RequestParam Long userId) {
-        Plan plan = this.planService.read(id);
-        List<Member> members = plan.getMembers();
-        members.add(this.userService.read(userId));
-        plan.setMembers(members);
-        this.userService.addPlan(userId, plan);
-        this.planService.save(plan);
     }
 }

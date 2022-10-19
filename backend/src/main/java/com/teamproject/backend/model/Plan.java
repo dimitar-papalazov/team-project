@@ -14,16 +14,16 @@ public class Plan {
     private String name;
     @ManyToMany
     private List<Workout> workouts;
-    @ManyToMany
-    private List<Member> members;
+    @ManyToOne
+    private Member member;
 
     public Plan() {
     }
 
-    public Plan(String name, List<Workout> workouts, List<Member> members) {
+    public Plan(String name, List<Workout> workouts, Member member) {
         this.name = name;
         this.workouts = workouts;
-        this.members = members;
+        this.member = member;
     }
 
     public Long getId() {
@@ -38,10 +38,6 @@ public class Plan {
         return workouts;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -50,7 +46,4 @@ public class Plan {
         this.workouts = workouts;
     }
 
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
 }

@@ -10,7 +10,6 @@ public class UserDto {
     private Float height;
     private Float weight;
     private List<Long> exercises;
-    private List<Long> plans;
     private List<Long> progresses;
     private List<Long> workouts;
 
@@ -18,7 +17,7 @@ public class UserDto {
     }
 
     public UserDto(String name, String email, String password, Integer age, Float height, Float weight,
-                   List<Long> exercises, List<Long> plans, List<Long> progresses, List<Long> workouts) {
+                   List<Long> exercises, List<Long> progresses, List<Long> workouts) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -26,7 +25,6 @@ public class UserDto {
         this.height = height;
         this.weight = weight;
         this.exercises = exercises;
-        this.plans = plans;
         this.progresses = progresses;
         this.workouts = workouts;
     }
@@ -57,10 +55,6 @@ public class UserDto {
 
     public List<Long> getExercises() {
         return exercises;
-    }
-
-    public List<Long> getPlans() {
-        return plans;
     }
 
     public List<Long> getProgresses() {
