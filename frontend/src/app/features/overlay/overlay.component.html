@@ -61,7 +61,7 @@
       <span class="spacer"></span>
       <div class="greeting p-10 pr-2 ml-1 mr-4 mt-1" [matMenuTriggerFor]="userMenu">
         <div *ngIf="!(responsiveListenerService.isHandset$ | async)" class="flxBoxIcon ml-1 mr-2">
-          {{ user.value.FullName }}
+          {{ user.value.name }}
         </div>
         <div class="flxBoxIcon ml-1" [class.mr-3]="responsiveListenerService.isHandset$ | async">
           <i class="fa fa-chevron-down"></i>

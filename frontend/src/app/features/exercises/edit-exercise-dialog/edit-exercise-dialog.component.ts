@@ -46,13 +46,16 @@ export class EditExerciseDialogComponent implements OnInit {
   }
 
   save(){
-    if(this.editMode){
+    console.log(this.editMode.value == true)
+    if(this.editMode.value ){
       this.exerciseService.putExercise(this.exercise).subscribe(data => {
         this.exerciseService.exerciseChanges.emit()
+        this.matDialogRef.close();
       })
     }else{
       this.exerciseService.postExercise(this.exercise).subscribe(data => {
         this.exerciseService.exerciseChanges.emit()
+        this.matDialogRef.close();
       })
     }
   }

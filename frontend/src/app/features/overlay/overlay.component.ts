@@ -21,15 +21,7 @@ import { menuItems } from './configs/menuItems.config';
   styleUrls: ['./overlay.component.scss'],
 })
 export class OverlayComponent implements OnInit {
-  userTemp: User = {
-    Id: 1,
-    UserName: 'darko.gjakovski253@hotmail.com',
-    Email: 'darko.gjakovski253@hotmail.com',
-    FullName: 'Darko Gjakovski',
-    FirstName: 'Darko',
-    LastName: 'Gjakovski',
-  };
-  user = new BehaviorSubject<User>(this.userTemp);
+  user = new BehaviorSubject<User>(new User());
   language = new BehaviorSubject('en');
   @Output() searchTerm = new EventEmitter<string>();
 
@@ -45,7 +37,14 @@ export class OverlayComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let tempuser = this.localStorageService.getItem('currentUser');
+    const user = new User();
+    user.id = tempuser.id;
+    user.email = tempuser.email;
+    user.name = tempuser.name;
+    this.user.next(user);
+  }
 
   ngAfterViewChecked(): void {
     this.changeDetector.detectChanges();

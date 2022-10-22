@@ -3,6 +3,7 @@ package com.teamproject.backend.model.dto;
 import java.util.List;
 
 public class UserDto {
+    private Long id;
     private String name;
     private String email;
     private String password;
@@ -63,5 +64,13 @@ public class UserDto {
 
     public List<Long> getWorkouts() {
         return workouts;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

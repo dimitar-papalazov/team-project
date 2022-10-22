@@ -15,7 +15,7 @@ export class ExcerciseService {
 
   getExercises(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:4200/exercises').pipe(map(data => {
+    return this.http.get<any>('http://localhost:3000/exercises').pipe(map(data => {
         if(keyword){
             return data.filter((exercises: Exercise) => 
                 exercises.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
@@ -26,19 +26,19 @@ export class ExcerciseService {
   }
 
   getExercise(exerciseId: string) {
-    return this.http.get('http://localhost:4200/exercises/'+exerciseId).pipe(map(data => {
+    return this.http.get('http://localhost:3000/exercises/'+exerciseId).pipe(map(data => {
         return data;
     }));
   }
 
   postExercise(exercise: Exercise): any{
-    return this.http.post<any>('http://localhost:4200/exercises',{exercise}).pipe(map(data => {
+    return this.http.post<any>('http://localhost:3000/exercises',{exercise}).pipe(map(data => {
         return data;
     }));
   }
 
   putExercise(exercise: Exercise): any{
-    return this.http.put<any>('http://localhost:4200/exercises',exercise).pipe(map(data => {
+    return this.http.put<any>('http://localhost:3000/exercises',exercise).pipe(map(data => {
         return data;
     }));
   }

@@ -2,30 +2,30 @@
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input matInput />
+    <input matInput  [(ngModel)]="name"/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput />
+    <input matInput [(ngModel)]="email"/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Photo Url</mat-label>
-    <input matInput />
+    <input matInput  [(ngModel)]="photoUrl"/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Age</mat-label>
-    <input matInput />
+    <input matInput  [(ngModel)]="age"/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Height</mat-label>
-    <input matInput />
+    <input matInput  [(ngModel)]="height"/>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Weight</mat-label>
-    <input matInput />
+    <input matInput  [(ngModel)]="weight"/>
   </mat-form-field>
 </div>
 <div mat-dialog-actions style="justify-content: center">
   <button mat-button (click)="cancel()">Cancel</button>
-  <button mat-button (click)="cancel()" cdkFocusInitial>Save</button>
+  <button mat-button (click)="save()" cdkFocusInitial>Save</button>
 </div>

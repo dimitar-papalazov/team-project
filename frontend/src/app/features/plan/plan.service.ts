@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { SearchService } from '../search/search.service';
 import { Plan } from './models/plan.model';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,12 @@ export class PlanService {
   editMode = new BehaviorSubject<boolean>(false);
   plansChanges = new EventEmitter<any>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {}
 
   getPlans(keyword? : string): Observable<any> {
+    let tempuser = this.localStorageService.getItem('currentUser');
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:3000/plans/user/1').pipe(map(data => { // ova treba da se smeni vo dinamicno id od localstorage
+    return this.http.get<any>('http://localhost:3000/plans/user/'+tempuser.id).pipe(map(data => { // ova treba da se smeni vo dinamicno id od localstorage
         if(keyword){
             return data.filter((plan: Plan) => 
                 plan.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
