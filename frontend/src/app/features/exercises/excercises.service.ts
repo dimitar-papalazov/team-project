@@ -2,6 +2,8 @@ import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Exercise } from './models/excercise';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { Workout } from '../workouts/models/workout';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class ExcerciseService {
 
   exerciseChanges = new EventEmitter<any>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {}
 
   getExercises(keyword? : string): Observable<any> {
     //This keyword is optional, to call this method from search service and filter through results.
@@ -32,7 +34,9 @@ export class ExcerciseService {
   }
 
   postExercise(exercise: Exercise): any{
-    return this.http.post<any>('http://localhost:3000/exercises',{exercise}).pipe(map(data => {
+    console.log(exercise)
+    let tempuser = this.localStorageService.getItem('currentUser');
+    return this.http.post<any>('http://localhost:3000/exercises?name='+ exercise.name + "&sets=" + exercise.sets + "&goal=" + exercise.goal_reps + "&url=" + exercise.url + "&userId=" + tempuser.id,{}).pipe(map(data => {
         return data;
     }));
   }

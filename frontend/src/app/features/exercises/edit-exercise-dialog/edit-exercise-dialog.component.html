@@ -1,6 +1,10 @@
 <h1 mat-dialog-title>Edit exercise details</h1>
 <div mat-dialog-content>
   <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Sets</mat-label>
     <input matInput [(ngModel)]="sets"/>
   </mat-form-field>

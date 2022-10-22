@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { ExcerciseService } from '../excercises.service';
 import { Exercise } from '../models/excercise';
 import { EditExerciseDialogService } from './service/edit-exercise-dialog.service';
@@ -26,6 +27,7 @@ export class EditExerciseDialogComponent implements OnInit {
     private readonly matDialogRef: MatDialogRef<EditExerciseDialogComponent>,
     private readonly editProfileDialogService: EditExerciseDialogService,
     private exerciseService: ExcerciseService,
+    private localStorageService: LocalStorageService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -46,7 +48,16 @@ export class EditExerciseDialogComponent implements OnInit {
   }
 
   save(){
+    let tempuser = this.localStorageService.getItem('currentUser');
     console.log(this.editMode.value == true)
+    this.exercise.name = this.name;
+    this.exercise.sets = this.sets;
+    this.exercise.goal_distance = this.goalDistance;
+    this.exercise.goal_reps = this.goalReps;
+    this.exercise.goal_time = this.goalTime;
+    this.exercise.goal_weight = this.goalWeight;
+    this.exercise.url = this.video;
+    this.exercise.user_id = tempuser.id;
     if(this.editMode.value ){
       this.exerciseService.putExercise(this.exercise).subscribe(data => {
         this.exerciseService.exerciseChanges.emit()
