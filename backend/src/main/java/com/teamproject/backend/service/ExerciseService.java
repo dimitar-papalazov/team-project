@@ -15,4 +15,5 @@ public interface ExerciseService {
     Exercise delete(Long id);
     Exercise save(Exercise exercise);
     void addProgress(Long id, Progress progress);
+    List<Exercise> getAllByMemberId(Long id);
 }

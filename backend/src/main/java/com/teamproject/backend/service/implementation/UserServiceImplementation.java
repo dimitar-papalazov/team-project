@@ -27,12 +27,10 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public Optional<Member> create(UserDto userDto) {
-        List<Exercise> exercises = new ArrayList<Exercise>();
-        List<Progress> progresses = new ArrayList<Progress>();
 
         return Optional.of(this.userRepository.save(new Member(userDto.getName(), userDto.getEmail(),
                 this.passwordEncoder.encode(userDto.getPassword()), userDto.getAge(), userDto.getHeight(),
-                userDto.getWeight(), exercises, progresses)));
+                userDto.getWeight())));
     }
 
     @Override
@@ -91,33 +89,5 @@ public class UserServiceImplementation implements UserService {
         }
 
         throw new InvalidUserCredentialsException();
-    }
-
-    @Override
-    public void addExercise(Long id, Exercise exercise) {
-        Member member = this.read(id);
-
-        if (member == null) {
-            return;
-        }
-
-        List<Exercise> exercises = member.getExercises();
-        exercises.add(exercise);
-        member.setExercises(exercises);
-        this.userRepository.save(member);
-    }
-
-    @Override
-    public void addProgress(Long id, Progress progress) {
-        Member member = this.read(id);
-
-        if (member == null) {
-            return;
-        }
-
-        List<Progress> progresses = member.getProgresses();
-        progresses.add(progress);
-        member.setProgresses(progresses);
-        this.userRepository.save(member);
     }
 }

@@ -7,18 +7,16 @@ public class ExerciseDto {
     private Integer sets;
     private Integer goal;
     private String url;
-    private List<Long> users;
+    private Long user;
     private List<Long> workouts;
-    private List<Long> progresses;
 
-    public ExerciseDto(String name, Integer sets, Integer goal, String url, List<Long> users, List<Long> workouts, List<Long> progresses) {
+    public ExerciseDto(String name, Integer sets, Integer goal, String url, Long user, List<Long> workouts) {
         this.name = name;
         this.sets = sets;
         this.goal = goal;
         this.url = url;
-        this.users = users;
+        this.user = user;
         this.workouts = workouts;
-        this.progresses = progresses;
     }
 
     public String getName() {
@@ -37,15 +35,11 @@ public class ExerciseDto {
         return url;
     }
 
-    public List<Long> getUsers() {
-        return users;
-    }
-
     public List<Long> getWorkouts() {
         return workouts;
     }
 
-    public List<Long> getProgresses() {
-        return progresses;
+    public Long getUser() {
+        return user;
     }
 }

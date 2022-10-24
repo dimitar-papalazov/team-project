@@ -15,25 +15,29 @@ public class Exercise {
     private Integer sets;
     private Integer goal;
     private String url;
-    @ManyToMany
-    private List<Member> members;
-    @ManyToMany
-    private List<Workout> workouts;
+    @ManyToOne
+    private Member member;
     @ManyToMany
     private List<Progress> progresses;
 
     public Exercise() {
     }
 
-    public Exercise(String name, Integer sets, Integer goal, String url, List<Member> members, List<Workout> workouts,
-                    List<Progress> progresses) {
+    public Exercise(String name, Integer sets, Integer goal, String url, Member member, List<Progress> progresses) {
         this.name = name;
         this.sets = sets;
         this.goal = goal;
         this.url = url;
-        this.members = members;
-        this.workouts = workouts;
+        this.member = member;
         this.progresses = progresses;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Long getId() {
@@ -56,14 +60,6 @@ public class Exercise {
         return url;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public List<Workout> getWorkouts() {
-        return workouts;
-    }
-
     public List<Progress> getProgresses() {
         return progresses;
     }
@@ -82,14 +78,6 @@ public class Exercise {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
-
-    public void setWorkouts(List<Workout> workouts) {
-        this.workouts = workouts;
     }
 
     public void setProgresses(List<Progress> progresses) {

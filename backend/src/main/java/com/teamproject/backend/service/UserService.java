@@ -13,6 +13,4 @@ public interface UserService {
     Optional<Member> update(Long id, UserDto userDto);
     Member delete(Long id);
     Member login(String email, String password);
-    void addExercise(Long id, Exercise exercise);
-    void addProgress(Long id, Progress progress);
 }

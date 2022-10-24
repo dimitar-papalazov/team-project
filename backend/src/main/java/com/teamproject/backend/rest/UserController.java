@@ -34,10 +34,10 @@ public class UserController {
         }
     }
 
-    @PutMapping(value = "/", consumes = {"*/*"})
-    public ResponseEntity<Member> update(@RequestBody UserDto userDto) {
+    @PutMapping(value = "/{id}", consumes = {"*/*"})
+    public ResponseEntity<Member> update(@RequestBody UserDto userDto, @PathVariable Long id) {
         try {
-            Member member = this.userService.update(userDto.getId(),userDto).get();
+            Member member = this.userService.update(id, userDto).get();
             return ResponseEntity.ok().body(member);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();

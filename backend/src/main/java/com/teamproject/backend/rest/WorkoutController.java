@@ -1,6 +1,5 @@
 package com.teamproject.backend.rest;
 
-import com.teamproject.backend.model.Plan;
 import com.teamproject.backend.model.Workout;
 import com.teamproject.backend.model.dto.WorkoutDto;
 import com.teamproject.backend.service.PlanService;
@@ -35,6 +34,14 @@ public class WorkoutController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PostMapping(value="/add-to-plan", consumes = {"*/*"})
+    public ResponseEntity.BodyBuilder addToPlan(@RequestParam Long workout_id, @RequestParam Long plan_id) {
+        Workout workout = this.workoutService.read(workout_id);
+
+        this.planService.addWorkout(plan_id, workout);
+        return ResponseEntity.ok();
     }
 
     @GetMapping("/{id}")

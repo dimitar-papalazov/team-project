@@ -16,11 +16,9 @@ import java.util.List;
 @RequestMapping("/plans")
 public class PlanController {
     private final PlanService planService;
-    private final UserService userService;
 
-    public PlanController(PlanService planService, UserService userService) {
+    public PlanController(PlanService planService) {
         this.planService = planService;
-        this.userService = userService;
     }
 
     @PostMapping("/")

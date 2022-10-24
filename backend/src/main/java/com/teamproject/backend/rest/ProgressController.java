@@ -43,10 +43,6 @@ public class ProgressController {
         try {
             Progress progress = this.progressService.create(progressDto).get();
 
-            for (Long id: progressDto.getUsers()) {
-                userService.addProgress(id, progress);
-            }
-
             for (Long id: progressDto.getExercises()) {
                 exerciseService.addProgress(id, progress);
             }
@@ -67,15 +63,15 @@ public class ProgressController {
         return progressService.delete(id);
     }
 
-    @PostMapping("/add-to-user")
-    public void addToUser(@RequestParam Long id, @RequestParam Long userId) {
-        Progress progress = this.progressService.read(id);
-        List<Member> members = progress.getMembers();
-        members.add(userService.read(userId));
-        progress.setMembers(members);
-        userService.addProgress(userId, progress);
-        this.progressService.save(progress);
-    }
+//    @PostMapping("/add-to-user")
+//    public void addToUser(@RequestParam Long id, @RequestParam Long userId) {
+//        Progress progress = this.progressService.read(id);
+//        List<Member> members = progress.getMembers();
+//        members.add(userService.read(userId));
+//        progress.setMembers(members);
+//        userService.addProgress(userId, progress);
+//        this.progressService.save(progress);
+//    }
 
     @PostMapping("/add-to-exercise")
     public void addToExercise(@RequestParam Long id, @RequestParam Long exerciseId) {
