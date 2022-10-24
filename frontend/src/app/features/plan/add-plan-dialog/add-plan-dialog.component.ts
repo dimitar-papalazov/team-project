@@ -42,6 +42,7 @@ export class AddPlanDialogComponent implements OnInit {
   add(){
     this.planService.postPlan(this.planNameForm.value,this.localStorageService.getItem('currentUser').id).subscribe(data => {
       this.planService.plansChanges.emit();
+      this.matDialogRef.close();
     })
   }
 }

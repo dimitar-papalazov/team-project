@@ -3,6 +3,7 @@ package com.teamproject.backend.model.dto;
 import java.util.List;
 
 public class UserDto {
+    private Long id;
     private String name;
     private String email;
     private String password;
@@ -11,12 +12,13 @@ public class UserDto {
     private Float weight;
     private List<Long> exercises;
     private List<Long> progresses;
+    private List<Long> workouts;
 
     public UserDto() {
     }
 
     public UserDto(String name, String email, String password, Integer age, Float height, Float weight,
-                   List<Long> exercises, List<Long> progresses) {
+                   List<Long> exercises, List<Long> progresses, List<Long> workouts) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -25,6 +27,7 @@ public class UserDto {
         this.weight = weight;
         this.exercises = exercises;
         this.progresses = progresses;
+        this.workouts = workouts;
     }
 
     public String getName() {
@@ -57,5 +60,17 @@ public class UserDto {
 
     public List<Long> getProgresses() {
         return progresses;
+    }
+
+    public List<Long> getWorkouts() {
+        return workouts;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 import { TitleService } from 'src/app/core/title.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
 import { User } from '../../core/models/user';
+import { AccountService } from './account.service';
 import { EditProfileDialogService } from './components/edit-profile-dialog/service/edit-profile-dialog.service';
 
 @Component({
@@ -12,14 +14,25 @@ import { EditProfileDialogService } from './components/edit-profile-dialog/servi
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<any>(null);
+  sub = new Subscription();
 
   constructor(
     private titleService: TitleService,
     private localStorageService: LocalStorageService,
     private editProfileDialogService: EditProfileDialogService,
-    public responsiveListenerService: ResponsiveListener
-  ) {}
+    public responsiveListenerService: ResponsiveListener,
+    private accountService: AccountService,
+    private loaderService: LoaderService
+  ) {this.sub.add(
+    this.accountService.userChanges.subscribe(()=>{
+      this.loaderService.display(true)
+      this.accountService.getMember(this.user.value.id).subscribe(data => {
+        this.user.next(data)
+        this.loaderService.display(false)
+      })
+    })
+  )}
 
   ngOnInit(): void {
     this.titleService.setTitle('Account');
