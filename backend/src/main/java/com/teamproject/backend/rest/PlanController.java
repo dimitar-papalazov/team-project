@@ -32,6 +32,15 @@ public class PlanController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Plan> update(@RequestBody PlanDto planDto, @PathVariable Long id) {
+        try {
+            return  ResponseEntity.ok().body(this.planService.update(id, planDto).get());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     @GetMapping("/{id}")
     public Plan read(@PathVariable Long id) {
         return planService.read(id);

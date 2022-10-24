@@ -71,7 +71,7 @@ public class WorkoutServiceImplementation implements WorkoutService {
             return null;
         }
 
-        workout.setName(workoutDto.getName());
+        if (workoutDto.getName() != null) workout.setName(workoutDto.getName());
         return Optional.of(this.workoutRepository.save(workout));
     }
 

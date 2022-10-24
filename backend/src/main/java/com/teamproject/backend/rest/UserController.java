@@ -24,6 +24,7 @@ public class UserController {
     public Member read(@PathVariable Long id) {
         return userService.read(id);
     }
+
     @PostMapping("/")
     public ResponseEntity<Member> register(@RequestBody UserDto userDto) {
         try {
@@ -34,7 +35,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(value = "/{id}", consumes = {"*/*"})
+    @PutMapping("/{id}")
     public ResponseEntity<Member> update(@RequestBody UserDto userDto, @PathVariable Long id) {
         try {
             Member member = this.userService.update(id, userDto).get();

@@ -36,6 +36,15 @@ public class WorkoutController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Workout> update(@RequestBody WorkoutDto workoutDto, @PathVariable Long id) {
+        try {
+            return ResponseEntity.ok().body(this.workoutService.update(id, workoutDto).get());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     @PostMapping(value="/add-to-plan", consumes = {"*/*"})
     public ResponseEntity.BodyBuilder addToPlan(@RequestParam Long workout_id, @RequestParam Long plan_id) {
         Workout workout = this.workoutService.read(workout_id);

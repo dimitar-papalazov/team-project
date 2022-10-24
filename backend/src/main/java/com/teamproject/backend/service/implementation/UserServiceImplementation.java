@@ -51,12 +51,12 @@ public class UserServiceImplementation implements UserService {
             return Optional.empty();
         }
 
-        member.setName(userDto.getName());
-        member.setEmail(userDto.getEmail());
-        member.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
-        member.setAge(userDto.getAge());
-        member.setHeight(userDto.getHeight());
-        member.setWeight(userDto.getWeight());
+        if (userDto.getName() != null)  member.setName(userDto.getName());
+        if (userDto.getEmail() != null) member.setEmail(userDto.getEmail());
+        if (userDto.getPassword() != null) member.setPassword(this.passwordEncoder.encode(userDto.getPassword()));
+        if (userDto.getAge() != null) member.setAge(userDto.getAge());
+        if (userDto.getHeight() != null) member.setHeight(userDto.getHeight());
+        if (userDto.getWeight() != null) member.setWeight(userDto.getWeight());
         return Optional.of(this.userRepository.save((member)));
     }
 

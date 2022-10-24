@@ -35,6 +35,15 @@ public class ExerciseController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Exercise> update(@RequestBody ExerciseDto exerciseDto, @PathVariable Long id) {
+        try {
+            return ResponseEntity.ok().body(this.exerciseService.update(id, exerciseDto).get());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
     @PostMapping(value="add-to-workout", consumes = {"*/*"})
     public ResponseEntity<Exercise> addToWorkout(@RequestParam Long exercise_id, @RequestParam Long workout_id) {
         try {

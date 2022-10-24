@@ -53,9 +53,9 @@ public class ExerciseServiceImplementation implements ExerciseService {
             return Optional.empty();
         }
 
-        exercise.setName(exerciseDto.getName());
-        exercise.setSets(exerciseDto.getSets());
-        exercise.setUrl(exerciseDto.getUrl());
+        if (exerciseDto.getName() != null) exercise.setName(exerciseDto.getName());
+        if (exerciseDto.getSets() != null) exercise.setSets(exerciseDto.getSets());
+        if (exerciseDto.getUrl() != null) exercise.setUrl(exerciseDto.getUrl());
         return Optional.of(this.exerciseRepository.save(exercise));
     }
 

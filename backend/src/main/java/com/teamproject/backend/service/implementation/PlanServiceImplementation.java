@@ -49,7 +49,7 @@ public class PlanServiceImplementation implements PlanService {
             return Optional.empty();
         }
 
-        plan.setName(planDto.getName());
+        if (planDto.getName() != null) plan.setName(planDto.getName());
         return Optional.of(this.planRepository.save(plan));
     }
 
