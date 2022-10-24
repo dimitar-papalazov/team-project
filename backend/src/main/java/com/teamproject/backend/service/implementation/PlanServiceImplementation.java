@@ -1,13 +1,11 @@
 package com.teamproject.backend.service.implementation;
 
-import com.teamproject.backend.model.Member;
 import com.teamproject.backend.model.Plan;
 import com.teamproject.backend.model.Workout;
 import com.teamproject.backend.model.dto.PlanDto;
 import com.teamproject.backend.model.exceptions.InvalidPlan;
 import com.teamproject.backend.repository.PlanRepository;
 import com.teamproject.backend.repository.UserRepository;
-import com.teamproject.backend.repository.WorkoutRepository;
 import com.teamproject.backend.service.PlanService;
 import org.springframework.stereotype.Service;
 
@@ -19,23 +17,17 @@ import java.util.Optional;
 public class PlanServiceImplementation implements PlanService {
     private final PlanRepository planRepository;
     private final UserRepository userRepository;
-    private final WorkoutRepository workoutRepository;
 
-    public PlanServiceImplementation(PlanRepository planRepository, UserRepository userRepository, WorkoutRepository workoutRepository) {
+    public PlanServiceImplementation(PlanRepository planRepository, UserRepository userRepository) {
         this.planRepository = planRepository;
         this.userRepository = userRepository;
-        this.workoutRepository = workoutRepository;
     }
 
     @Override
     public Optional<Plan> create(PlanDto planDto) {
-        List<Workout> workouts = new ArrayList<Workout>();
-
-        for (Long id: planDto.getWorkouts()) {
-            workouts.add(this.workoutRepository.findById(id).get());
-        }
-
-        Plan plan = this.planRepository.save(new Plan(planDto.getName(), workouts, this.userRepository.findById(planDto.getUser_id()).get()));
+        Plan plan = this.planRepository.save(new Plan(planDto.getName(),
+                new ArrayList<>(),
+                this.userRepository.findById(planDto.getUser_id()).get()));
         return Optional.of(plan);
     }
 
@@ -91,9 +83,7 @@ public class PlanServiceImplementation implements PlanService {
             return;
         }
 
-        List<Workout> workouts = plan.getWorkouts();
-        workouts.add(workout);
-        plan.setWorkouts(workouts);
+        plan.getWorkouts().add(workout);
         planRepository.save(plan);
     }
 }

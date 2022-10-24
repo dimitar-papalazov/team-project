@@ -45,7 +45,7 @@ public class PlanController {
     }
 
     @DeleteMapping("/{id}")
-    public Plan delete(@PathVariable Long id) {
-        return planService.delete(id);
+    public void delete(@PathVariable Long id) {
+        planService.delete(id);
     }
 }

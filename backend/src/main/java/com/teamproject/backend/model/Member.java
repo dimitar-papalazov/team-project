@@ -22,14 +22,12 @@ public class Member {
     private List<Exercise> exercises;
     @ManyToMany
     private List<Progress> progresses;
-    @ManyToMany
-    private List<Workout> workouts;
 
     public Member() {
     }
 
     public Member(String name, String email, String password, Integer age, Float height, Float weight,
-                  List<Exercise> exercises, List<Progress> progresses, List<Workout> workouts) {
+                  List<Exercise> exercises, List<Progress> progresses) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -38,7 +36,6 @@ public class Member {
         this.weight = weight;
         this.exercises = exercises;
         this.progresses = progresses;
-        this.workouts = workouts;
     }
 
     public Long getId() {
@@ -77,10 +74,6 @@ public class Member {
         return progresses;
     }
 
-    public List<Workout> getWorkouts() {
-        return workouts;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -111,9 +104,5 @@ public class Member {
 
     public void setProgresses(List<Progress> progresses) {
         this.progresses = progresses;
-    }
-
-    public void setWorkouts(List<Workout> workouts) {
-        this.workouts = workouts;
     }
 }

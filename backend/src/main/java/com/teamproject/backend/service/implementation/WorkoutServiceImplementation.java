@@ -33,13 +33,8 @@ public class WorkoutServiceImplementation implements WorkoutService {
 
     @Override
     public Optional<Workout> create(WorkoutDto workoutDto) {
-        List<Member> members = new ArrayList<Member>();
         List<Plan> plans = new ArrayList<Plan>();
         List<Exercise> exercises = new ArrayList<Exercise>();
-
-        for (Long id: workoutDto.getUsers()) {
-            members.add(this.userRepository.findById(id).get());
-        }
 
         for (Long id: workoutDto.getPlans()) {
             plans.add(this.planRepository.findById(id).get());
@@ -49,13 +44,18 @@ public class WorkoutServiceImplementation implements WorkoutService {
             exercises.add(this.exerciseRepository.findById(id).get());
         }
 
-        Workout workout = this.workoutRepository.save(new Workout(workoutDto.getName(), members, plans, exercises));
+        Workout workout = this.workoutRepository.save(new Workout(workoutDto.getName(), this.userRepository.findById(workoutDto.getUser()).get(), exercises));
         return Optional.of(workout);
     }
 
     @Override
     public List<Workout> readAll() {
         return this.workoutRepository.findAll();
+    }
+
+    @Override
+    public List<Workout> getAllByMemberId(Long id) {
+        return this.workoutRepository.getAllByMember_Id(id);
     }
 
     @Override
@@ -83,6 +83,13 @@ public class WorkoutServiceImplementation implements WorkoutService {
             return null;
         }
 
+        List<Plan> plans = this.planRepository.findAllByWorkoutsContaining(workout);
+
+        for (Plan plan : plans) {
+            plan.getWorkouts().remove(workout);
+            this.planRepository.save(plan);
+        }
+
         this.workoutRepository.delete(workout);
         return workout;
     }
@@ -100,9 +107,7 @@ public class WorkoutServiceImplementation implements WorkoutService {
             return;
         }
 
-        List<Exercise> exercises = workout.getExercises();
-        exercises.add(exercise);
-        workout.setExercises(exercises);
+        workout.getExercises().add(exercise);
         workoutRepository.save(workout);
     }
 }

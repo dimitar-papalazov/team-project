@@ -45,5 +45,4 @@ public class Plan {
     public void setWorkouts(List<Workout> workouts) {
         this.workouts = workouts;
     }
-
 }
