@@ -30,19 +30,8 @@ public class ProgressServiceImplementation implements ProgressService {
 
     @Override
     public Optional<Progress> create(ProgressDto progressDto) {
-        List<Member> members = new ArrayList<>();
-        List<Exercise> exercises = new ArrayList<>();
-
-        for (Long id: progressDto.getUsers()) {
-            members.add(this.userRepository.findById(id).get());
-        }
-
-        for (Long id: progressDto.getExercises()) {
-            exercises.add(this.exerciseRepository.findById(id).get());
-        }
-
         Progress progress = this.progressRepository.save(new Progress(progressDto.getDate(), progressDto.getValue(),
-                ProgressType.valueOf(progressDto.getType()), members, exercises));
+                ProgressType.valueOf(progressDto.getType()), this.userRepository.findById(progressDto.getUser()).get()));
 
         return Optional.of(progress);
     }
@@ -65,9 +54,9 @@ public class ProgressServiceImplementation implements ProgressService {
             return null;
         }
 
-        progress.setVal(progressDto.getValue());
-        progress.setD(progressDto.getDate());
-        progress.setT(ProgressType.valueOf(progressDto.getType()));
+        if (progressDto.getValue() != null) progress.setVal(progressDto.getValue());
+        if (progressDto.getDate() != null) progress.setD(progressDto.getDate());
+        if (progressDto.getType() != null) progress.setT(ProgressType.valueOf(progressDto.getType()));
         return Optional.of(this.progressRepository.save(progress));
     }
 
@@ -77,6 +66,13 @@ public class ProgressServiceImplementation implements ProgressService {
 
         if (progress == null) {
             return null;
+        }
+
+        List<Exercise> exercises = this.exerciseRepository.findAllByProgressesContaining(progress);
+
+        for (Exercise exercise: exercises) {
+            exercise.getProgresses().remove(progress);
+            this.exerciseRepository.save(exercise);
         }
 
         this.progressRepository.delete(progress);
@@ -89,7 +85,7 @@ public class ProgressServiceImplementation implements ProgressService {
     }
 
     @Override
-    public Progress save(Progress progress) {
-        return this.progressRepository.save(progress);
+    public List<Progress> getAllByMemberId(Long id) {
+        return null;
     }
 }

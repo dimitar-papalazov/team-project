@@ -17,19 +17,48 @@ public class Progress {
     private Integer val;
     @Enumerated
     private ProgressType t;
-    @ManyToMany
-    private List<Member> members;
-    @ManyToMany
-    private List<Exercise> exercises;
+    @ManyToOne
+    private Member member;
 
     public Progress() {
     }
 
-    public Progress(Date d, Integer val, ProgressType t, List<Member> members, List<Exercise> exercises) {
-        this.val = val;
+    public Progress(Date d, Integer val, ProgressType t, Member member) {
         this.d = d;
+        this.val = val;
         this.t = t;
-        this.members = members;
-        this.exercises = exercises;
+        this.member = member;
+    }
+
+    public Date getD() {
+        return d;
+    }
+
+    public void setD(Date d) {
+        this.d = d;
+    }
+
+    public Integer getVal() {
+        return val;
+    }
+
+    public void setVal(Integer val) {
+        this.val = val;
+    }
+
+    public ProgressType getT() {
+        return t;
+    }
+
+    public void setT(ProgressType t) {
+        this.t = t;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
     }
 }

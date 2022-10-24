@@ -8,6 +8,8 @@ import com.teamproject.backend.service.WorkoutService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/exercises")
@@ -60,6 +62,11 @@ public class ExerciseController {
     @GetMapping("/{id}")
     public Exercise read(@PathVariable Long id) {
         return exerciseService.read(id);
+    }
+
+    @GetMapping("/user/{id}")
+    public List<Exercise> getAllByMemberId(@PathVariable Long id) {
+        return exerciseService.getAllByMemberId(id);
     }
 
     @DeleteMapping("/{id}")

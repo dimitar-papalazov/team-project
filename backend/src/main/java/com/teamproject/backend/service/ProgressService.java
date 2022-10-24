@@ -14,5 +14,5 @@ public interface ProgressService {
     Optional<Progress> update(Long id, ProgressDto progressDto);
     Progress delete(Long id);
     ProgressType[] types();
-    Progress save(Progress progress);
+    List<Progress> getAllByMemberId(Long id);
 }

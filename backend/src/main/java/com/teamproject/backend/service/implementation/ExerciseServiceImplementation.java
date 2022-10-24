@@ -79,11 +79,6 @@ public class ExerciseServiceImplementation implements ExerciseService {
     }
 
     @Override
-    public Exercise save(Exercise exercise) {
-        return this.exerciseRepository.save(exercise);
-    }
-
-    @Override
     public void addProgress(Long id, Progress progress) {
         Exercise exercise = this.read(id);
 

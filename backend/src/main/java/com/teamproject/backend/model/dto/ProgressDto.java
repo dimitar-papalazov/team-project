@@ -7,15 +7,15 @@ public class ProgressDto {
     private Integer value;
     private Date date;
     private String type;
-    private List<Long> users;
-    private List<Long> exercises;
+    private Long user;
+    private Long exercise;
 
-    public ProgressDto(Integer value, Date date, String type, List<Long> users, List<Long> exercises) {
+    public ProgressDto(Integer value, Date date, String type, Long user, Long exercise) {
         this.value = value;
         this.date = date;
         this.type = type;
-        this.users = users;
-        this.exercises = exercises;
+        this.user = user;
+        this.exercise = exercise;
     }
 
     public Integer getValue() {
@@ -30,11 +30,11 @@ public class ProgressDto {
         return type;
     }
 
-    public List<Long> getUsers() {
-        return users;
+    public Long getUser() {
+        return user;
     }
 
-    public List<Long> getExercises() {
-        return exercises;
+    public Long getExercise() {
+        return exercise;
     }
 }

@@ -13,7 +13,6 @@ public interface ExerciseService {
     Exercise read(Long id);
     Optional<Exercise> update(Long id, ExerciseDto exerciseDto);
     Exercise delete(Long id);
-    Exercise save(Exercise exercise);
     void addProgress(Long id, Progress progress);
     List<Exercise> getAllByMemberId(Long id);
 }
