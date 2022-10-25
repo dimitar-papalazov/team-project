@@ -15,6 +15,7 @@ export class PlanCardComponent implements OnInit {
   constructor(public planService: PlanService, private addWorkoutToPlanDialogService: AddWorkoutToPlanService) { }
 
   ngOnInit(): void {
+    console.log(this.plan.workouts)
   }
 
 }

@@ -86,4 +86,16 @@ public class PlanServiceImplementation implements PlanService {
         plan.getWorkouts().add(workout);
         planRepository.save(plan);
     }
+
+    @Override
+    public void removeWorkout(Long id, Workout workout) {
+        Plan plan = this.read(id);
+
+        if (plan == null) {
+            return;
+        }
+
+        plan.getWorkouts().remove(workout);
+        planRepository.save(plan);
+    }
 }

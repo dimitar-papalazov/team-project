@@ -20,8 +20,9 @@ export class AccountService {
   }
 
   putMember(user: User): any{
-    console.log(user)
-    return this.http.put<any>('http://localhost:3000/users/',user).pipe(map(data => {
+    const userDto = {...user}
+    delete userDto.id
+    return this.http.put<any>(`http://localhost:3000/users/${user.id}`, userDto).pipe(map(data => {
         return data;
     }));
   }

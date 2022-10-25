@@ -46,11 +46,15 @@ public class WorkoutController {
     }
 
     @PostMapping(value="/add-to-plan", consumes = {"*/*"})
-    public ResponseEntity.BodyBuilder addToPlan(@RequestParam Long workout_id, @RequestParam Long plan_id) {
-        Workout workout = this.workoutService.read(workout_id);
+    public void addToPlan(@RequestParam String workout_id, @RequestParam String plan_id) {
+        Workout workout = this.workoutService.read(Long.parseLong(workout_id));
+        this.planService.addWorkout(Long.parseLong(plan_id), workout);
+    }
 
-        this.planService.addWorkout(plan_id, workout);
-        return ResponseEntity.ok();
+    @PostMapping(value="/remove-from-plan", consumes = {"*/*"})
+    public void removeFromPlan(@RequestParam String workout_id, @RequestParam String plan_id) {
+        Workout workout = this.workoutService.read(Long.parseLong(workout_id));
+        this.planService.removeWorkout(Long.parseLong(plan_id), workout);
     }
 
     @GetMapping("/{id}")

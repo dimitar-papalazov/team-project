@@ -33,17 +33,16 @@ export class AddWorkoutDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  ngOnInit(): void {
-    this.workoutName = this.data.workoutDialog;
-  }
+  ngOnInit(): void { }
 
   cancel(): void {
     this.matDialogRef.close();
   }
 
   add(){
-    this.workoutService.postWorkout(this.workoutNameForm.value,this.localStorageService.getItem('user').id).subscribe(data => {
+    this.workoutService.postWorkout(this.workoutNameForm.value, this.localStorageService.getItem('currentUser').id).subscribe(data => {
       this.workoutService.workoutsChanges.emit()
+      this.matDialogRef.close();
     })
   }
 }

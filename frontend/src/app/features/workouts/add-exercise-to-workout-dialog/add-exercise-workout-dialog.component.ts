@@ -45,6 +45,7 @@ export class AddExcercisesToWorkoutComponent implements OnInit {
   add(){
     this.exerciseService.addExerciseToWorkout(this.selectedExercise.id, this.data.workoutId).subscribe(data => {
       this.workoutService.workoutsChanges.emit()
+      this.matDialogRef.close();
     })
   }
 }

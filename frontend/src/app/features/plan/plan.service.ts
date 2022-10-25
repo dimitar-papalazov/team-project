@@ -55,7 +55,9 @@ export class PlanService {
   }
 
   removeWorkoutFromPlan(planId: number, workoutId: number): any{
-
+    return this.http.post<any>(`http://localhost:3000/workouts/remove-from-plan?workout_id=${workoutId}&plan_id=${planId}`, {}).pipe(map(data => {
+        return data;
+    }));
   }
   
 }

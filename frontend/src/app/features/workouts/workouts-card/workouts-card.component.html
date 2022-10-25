@@ -1,6 +1,6 @@
 <div class="cardContent p-4">
     <div class="flexWrapper">
-        <div class="workoutTitle" [class.mb-3]="hasEdit == true">Cardio workout</div>
+        <div class="workoutTitle" [class.mb-3]="hasEdit == true">{{workout.name}}</div>
         <ng-container *ngIf="hasEdit == true">
             <div *ngIf="!workoutService.editMode.value" class="editIcon" (click)="editMode()"> <i [class]="editIcon" class="mr-2" aria-hidden="true"> </i></div>
             <div class="flex" *ngIf="workoutService.editMode.value">
@@ -23,9 +23,9 @@
        </div>
     </div>
     <div *ngIf="(expanded | async) || planView == false" class="row workoutsRow mx-0">
-      <ng-container *ngFor="let exercise of exercises | async">
+      <ng-container *ngFor="let exercise of workout.exercises">
         <div class="col-12 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-6 pb-2 px-0 m-0" [class.pr-2]="!(responsiveListenerService.isHandset$ | async)">
-          <app-exercises-card [parenWorkout]="workout" [workoutView]="true" [planView]="planView" [hasEdit]='false' [hasRemove]="true" [exercise]='exercise'></app-exercises-card>
+          <app-exercises-card [parenWorkoutId]="workout.id" [workoutView]="true" [planView]="planView" [hasEdit]='false' [hasRemove]="true" [exercise]='exercise'></app-exercises-card>
         </div>
       </ng-container>
       

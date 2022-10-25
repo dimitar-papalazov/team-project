@@ -27,10 +27,6 @@ public class ExerciseController {
         try {
             Exercise exercise = this.exerciseService.create(exerciseDto).get();
 
-            for (Long id: exerciseDto.getWorkouts()) {
-                workoutService.addExercise(id, exercise);
-            }
-
             return ResponseEntity.ok().body(exercise);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
@@ -52,6 +48,19 @@ public class ExerciseController {
             Exercise exercise = this.exerciseService.read(exercise_id);
 
             workoutService.addExercise(workout_id, exercise);
+
+            return ResponseEntity.ok().body(exercise);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @PostMapping(value="remove-from-workout", consumes = {"*/*"})
+    public ResponseEntity<Exercise> removeFromWorkout(@RequestParam String exercise_id, @RequestParam String workout_id) {
+        try {
+            Exercise exercise = this.exerciseService.read(Long.parseLong(exercise_id));
+
+            workoutService.removeExercise(Long.parseLong(workout_id), exercise);
 
             return ResponseEntity.ok().body(exercise);
         } catch (Exception e) {

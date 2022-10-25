@@ -8,15 +8,13 @@ public class ExerciseDto {
     private Integer goal;
     private String url;
     private Long user;
-    private List<Long> workouts;
 
-    public ExerciseDto(String name, Integer sets, Integer goal, String url, Long user, List<Long> workouts) {
+    public ExerciseDto(String name, Integer sets, Integer goal, String url, Long user) {
         this.name = name;
         this.sets = sets;
         this.goal = goal;
         this.url = url;
         this.user = user;
-        this.workouts = workouts;
     }
 
     public String getName() {
@@ -33,10 +31,6 @@ public class ExerciseDto {
 
     public String getUrl() {
         return url;
-    }
-
-    public List<Long> getWorkouts() {
-        return workouts;
     }
 
     public Long getUser() {

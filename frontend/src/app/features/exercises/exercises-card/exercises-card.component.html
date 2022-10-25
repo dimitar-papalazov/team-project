@@ -6,7 +6,7 @@
                 <img src="../../../../assets/imgs/run.png">
             </div>
             <div class="mainInfo mx-3 mt-2 mb-4">
-                Running
+                {{exercise.name}}
             </div>
         </div>
       </div>
@@ -16,28 +16,19 @@
             <div class="flexBox">
                 <div class="flexLeft">
                     <div class="subInfoText">
-                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Sets' | translate }}:<div class="highlight">0</div></h2>
-                    </div>
-                    <div class="subInfoText">
-                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Goal reps' | translate }}:<div class="highlight">10</div></h2>
-                    </div>
-                    <div class="subInfoText">
-                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Goal time' | translate }}:<div class="highlight">10 min</div></h2>
+                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Sets' | translate }}:<div class="highlight">{{exercise.sets}}</div></h2>
                     </div>
                 </div>
 
                 <div class="flexRight">
                     <div class="subInfoText">
-                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Goal weight' | translate }}:<div class="highlight">50 kg</div></h2>
-                    </div>
-                    <div class="subInfoText">
-                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Goal distance' | translate }}:<div class="highlight">10 km</div></h2>
+                        <h2 class='secondaryInfo m-0 mb-2'>{{ 'Goal' | translate }}:<div class="highlight">{{exercise.goal}} kg</div></h2>
                     </div>
                 </div>
             </div>
 
             <div class="subInfoText">
-                <h2 class='secondaryInfo m-0 mb-2 mt-3'>{{ 'Guide' | translate}}: <a target="_blank" href="https://www.youtube.com/watch?v=5umbf4ps0GQ" class="highlight videoLink">https://www.youtube.com/watch?v=5umbf4ps0GQ</a></h2>
+                <h2 class='secondaryInfo m-0 mb-2 mt-3'>{{ 'Guide' | translate}}: <a target="_blank" href="{{exercise.url}}" class="highlight videoLink">{{exercise.url}}</a></h2>
             </div>
 
         </div>

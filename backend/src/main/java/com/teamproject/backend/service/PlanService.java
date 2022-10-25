@@ -16,5 +16,6 @@ public interface PlanService {
     Plan delete(Long id);
     List<Plan> getAllByMemberId(Long memberId);
     void addWorkout(Long id, Workout workout);
+    void removeWorkout(Long id, Workout workout);
     Plan save(Plan plan);
 }

@@ -110,4 +110,16 @@ public class WorkoutServiceImplementation implements WorkoutService {
         workout.getExercises().add(exercise);
         workoutRepository.save(workout);
     }
+
+    @Override
+    public void removeExercise(Long id, Exercise exercise) {
+        Workout workout = this.read(id);
+
+        if (workout == null) {
+            return;
+        }
+
+        workout.getExercises().remove(exercise);
+        workoutRepository.save(workout);
+    }
 }

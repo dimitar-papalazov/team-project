@@ -17,4 +17,5 @@ public interface WorkoutService {
     Workout delete(Long id);
     Workout save(Workout workout);
     void addExercise(Long id, Exercise exercise);
+    void removeExercise(Long id, Exercise exercise);
 }

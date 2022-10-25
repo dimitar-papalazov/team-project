@@ -17,8 +17,9 @@ export class WorkoutsService {
   constructor(private http: HttpClient) {}
 
   getWorkouts(keyword? : string): Observable<any> {
+    const id = JSON.parse(localStorage.getItem('currentUser')).id
     //This keyword is optional, to call this method from search service and filter through results.
-    return this.http.get<any>('http://localhost:3000/workouts').pipe(map(data => {
+    return this.http.get<any>('http://localhost:3000/workouts/user/' + id).pipe(map(data => {
         if(keyword){
             return data.filter((workout: Workout) => 
                 workout.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
@@ -35,7 +36,12 @@ export class WorkoutsService {
   }
 
   postWorkout(name: string, userId: number): any{
-    return this.http.post<any>('http://localhost:3000/workouts',{name,userId}).pipe(map(data => {
+    return this.http.post<any>('http://localhost:3000/workouts/',{
+      name,
+      user: userId,
+      plans: [],
+      exercises: []
+    }).pipe(map(data => {
         return data;
     }));
   }
@@ -53,6 +59,8 @@ export class WorkoutsService {
   }
   
   addWorkoutToPlan(workoutId: number, planId: number): any{
-    
+    return this.http.post<any>(`http://localhost:3000/workouts/add-to-plan?workout_id=${workoutId}&plan_id=${planId}`, {}).pipe(map(data => {
+      return data
+    }))
   }
 }

@@ -5,7 +5,7 @@
             <div class="workoutTitle mb-3">{{plan.name}}</div>
             <div class="flexWrapper">
             <!-- <i [class]="plusIcon" class="plusIcon mb-3" (click)="addWorkoutToPlan(plan.id)" aria-hidden="true"> </i> -->
-            <i [class]="plusIcon" class="plusIcon mb-3 mr-3" (click)="addWorkoutToPlan()" aria-hidden="true"> </i>
+            <i [class]="plusIcon" class="plusIcon mb-3 mr-3" (click)="addWorkoutToPlan(plan.id)" aria-hidden="true"> </i>
             <i [class]="trashIcon" class="plusIcon mb-3" (click)="deletePlan(plan.id)" aria-hidden="true"> </i>
             </div>
         </div>

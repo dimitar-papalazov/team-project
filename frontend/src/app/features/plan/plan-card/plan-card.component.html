@@ -1,9 +1,9 @@
 <div class="row workoutsRow mx-0 mb-5">
 
-    <!-- <ng-container *ngFor="let exercise of plan.workouts | async">
+    <ng-container *ngFor="let workout of plan.workouts">
         <div class="col-12 px-0">
-        <app-workouts-card [hasDelete]="true" [parentPlan]="plan" [planView]="true" [hasEdit]="false" [hasExpand]="true"></app-workouts-card>
+        <app-workouts-card [workout]="workout" [hasDelete]="true" [parentPlan]="plan" [planView]="true" [hasEdit]="false" [hasExpand]="true"></app-workouts-card>
         </div>
-    </ng-container> -->
+    </ng-container>
 
 </div>

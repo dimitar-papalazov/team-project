@@ -16,11 +16,8 @@ export class EditExerciseDialogComponent implements OnInit {
   exercise: Exercise;
   name: string = '';
   sets: number = 0;
-  goalReps: number = 0;
-  goalTime: number = 0;
-  goalWeight:  number = 0;
-  goalDistance: number = 0;
-  video: string = "";
+  goal: number = 0;
+  url: string = "";
   editMode = new BehaviorSubject<boolean>(false);
 
   constructor(
@@ -35,12 +32,8 @@ export class EditExerciseDialogComponent implements OnInit {
     this.exercise = this.data.exerciseDialog;
     this.editMode.next(this.data.editModeDialog);
     console.log("editmode: " + this.editMode.value)
-    // this.sets = this.exercise.sets || 0;
-    this.goalReps = this.exercise?.goal_reps || 0;
-    this.goalDistance = this.exercise?.goal_distance || 0;
-    this.goalTime = this.exercise?.goal_time || 0;
-    this.goalWeight = this.exercise?.goal_weight || 0;
-    this.video = this.exercise?.url || "";
+    this.sets = this.exercise.sets || 0;
+    this.url = this.exercise?.url || "";
   }
 
   cancel(): void {
@@ -52,12 +45,9 @@ export class EditExerciseDialogComponent implements OnInit {
     console.log(this.editMode.value == true)
     this.exercise.name = this.name;
     this.exercise.sets = this.sets;
-    this.exercise.goal_distance = this.goalDistance;
-    this.exercise.goal_reps = this.goalReps;
-    this.exercise.goal_time = this.goalTime;
-    this.exercise.goal_weight = this.goalWeight;
-    this.exercise.url = this.video;
-    this.exercise.user_id = tempuser.id;
+    this.exercise.url = this.url;
+    this.exercise.user = tempuser.id;
+    this.exercise.goal = this.goal;
     if(this.editMode.value ){
       this.exerciseService.putExercise(this.exercise).subscribe(data => {
         this.exerciseService.exerciseChanges.emit()

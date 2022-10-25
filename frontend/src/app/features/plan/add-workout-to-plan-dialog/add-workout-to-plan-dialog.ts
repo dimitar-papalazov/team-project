@@ -47,6 +47,7 @@ export class AddWorkoutToPlanComponent implements OnInit {
   add(){
     this.workoutService.addWorkoutToPlan(this.selectedWorkout.id, this.data.planId).subscribe(data => {
       this.planService.plansChanges.emit()
+      this.matDialogRef.close()
     })
   }
 }
