@@ -42,7 +42,7 @@ public class ExerciseController {
         }
     }
 
-    @PostMapping(value="add-to-workout", consumes = {"*/*"})
+    @PostMapping(value="/add-to-workout", consumes = {"*/*"})
     public ResponseEntity<Exercise> addToWorkout(@RequestParam Long exercise_id, @RequestParam Long workout_id) {
         try {
             Exercise exercise = this.exerciseService.read(exercise_id);
@@ -55,7 +55,7 @@ public class ExerciseController {
         }
     }
 
-    @PostMapping(value="remove-from-workout", consumes = {"*/*"})
+    @PostMapping(value="/remove-from-workout", consumes = {"*/*"})
     public ResponseEntity<Exercise> removeFromWorkout(@RequestParam String exercise_id, @RequestParam String workout_id) {
         try {
             Exercise exercise = this.exerciseService.read(Long.parseLong(exercise_id));
