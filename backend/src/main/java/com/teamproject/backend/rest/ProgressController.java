@@ -51,6 +51,11 @@ public class ProgressController {
         return progressService.read(id);
     }
 
+    @GetMapping("/user/{id}")
+    public List<Progress> readByUserId(@PathVariable Long id) {
+        return progressService.getAllByMemberId(id);
+    }
+
     @GetMapping("/types")
     public ProgressType[] types() {
         return progressService.types();
