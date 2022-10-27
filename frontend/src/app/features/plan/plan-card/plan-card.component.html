@@ -1,8 +1,14 @@
-<div class="row workoutsRow mx-0 mb-5">
+<div class="row workoutsRow mx-0 mt-3">
 
     <ng-container *ngFor="let workout of plan.workouts">
         <div class="col-12 px-0">
         <app-workouts-card [workout]="workout" [hasDelete]="true" [parentPlan]="plan" [planView]="true" [hasEdit]="false" [hasExpand]="true"></app-workouts-card>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="plan.workouts.length == 0">
+        <div class="centerEmpty">
+            There are currently no workouts in this plan
         </div>
     </ng-container>
 

@@ -33,8 +33,10 @@ export class EditExerciseDialogComponent implements OnInit {
     this.editMode.next(this.data.editModeDialog);
     console.log("editmode: " + this.editMode.value)
     this.sets = this.exercise.sets || 0;
-    this.url = this.exercise?.url || "";
-  }
+    this.url = this.exercise.url || "";
+    this.goal = this.exercise.goal || 0;
+    this.name = this.exercise.name || "";
+   }
 
   cancel(): void {
     this.matDialogRef.close();
