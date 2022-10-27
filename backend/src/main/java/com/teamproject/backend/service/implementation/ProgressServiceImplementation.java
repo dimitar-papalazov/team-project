@@ -86,6 +86,6 @@ public class ProgressServiceImplementation implements ProgressService {
 
     @Override
     public List<Progress> getAllByMemberId(Long id) {
-        return null;
+        return this.progressRepository.getAllByMember_Id(id);
     }
 }
