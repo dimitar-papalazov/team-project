@@ -9,6 +9,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { PieChartService } from './components/pie-chart/service/pie-chart.service';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { LineChartService } from './components/line-chart/service/line-chart.service';
+import { ProgressesModule } from '../progress/progress.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     SharedModule,
+    ProgressesModule
   ],
   exports: [RouterModule],
   declarations: [DashboardComponent, PieChartComponent, LineChartComponent],

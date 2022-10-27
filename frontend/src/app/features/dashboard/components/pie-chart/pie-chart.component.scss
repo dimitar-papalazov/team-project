@@ -6,7 +6,8 @@
   text-align: center;
   border-radius: 5%;
   background-color: rgb(0 0 0 / 79%);
-  width: 240px;
+  min-width: 240px;
+  width: 100%;
 
   .pie {
     width: 150px;
