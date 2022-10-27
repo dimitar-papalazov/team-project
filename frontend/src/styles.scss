@@ -7,6 +7,10 @@
     src: local("Sora"), url(./assets/fonts/Sora-Regular.ttf) format("ttf");
 }
 
+::ng-deep .mat-snack-bar-container {
+    margin-top: 250px !important;
+}
+
 $custom-typography: mat-typography-config(
   $font-family: 'Sora',
   $display-4:     mat-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),

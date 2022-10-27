@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { WorkoutsService } from '../../workouts/workouts.service';
 import { EditExerciseDialogService } from '../edit-exercise-dialog/service/edit-exercise-dialog.service';
 import { ExcerciseService } from '../excercises.service';
@@ -21,13 +22,16 @@ export class ExercisesCardComponent implements OnInit {
 
   constructor(public workoutService: WorkoutsService,
     private editExerciseDialogService: EditExerciseDialogService,
+    private snackbarService: SnackbarService,
     private exerciseService: ExcerciseService) { }
+
 
   ngOnInit(): void {
   }
 
   removeExerciseFromWorkout(){
     this.exerciseService.removeExerciseFromWorkout(this.exercise.id,this.parenWorkoutId).subscribe(data => {
+      this.snackbarService.fireSnackbar('success',"Succesfully removed exercise from workout!")
       this.workoutService.workoutsChanges.emit()
     })
   }
@@ -38,6 +42,7 @@ export class ExercisesCardComponent implements OnInit {
 
   deleteExercise(){
     this.exerciseService.deleteExercise(this.exercise.id).subscribe(data => {
+      this.snackbarService.fireSnackbar('success',"Succesfully deleted exercise!")
       this.exerciseService.exerciseChanges.emit()
     })
   }

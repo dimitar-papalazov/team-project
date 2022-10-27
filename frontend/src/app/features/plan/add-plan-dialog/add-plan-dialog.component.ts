@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { Plan } from '../models/plan.model';
 import { PlanService } from '../plan.service';
 import { AddPlanDialogService } from './service/add-plan-dialog';
@@ -30,6 +31,7 @@ export class AddPlanDialogComponent implements OnInit {
     private readonly editProfileDialogService: AddPlanDialogService,
     private planService: PlanService,
     private localStorageService: LocalStorageService,
+    private snackbarService: SnackbarService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -41,6 +43,7 @@ export class AddPlanDialogComponent implements OnInit {
 
   add(){
     this.planService.postPlan(this.planNameForm.value,this.localStorageService.getItem('currentUser').id).subscribe(data => {
+      this.snackbarService.fireSnackbar('success',"Succesfully added plan!")
       this.planService.plansChanges.emit();
       this.matDialogRef.close();
     })

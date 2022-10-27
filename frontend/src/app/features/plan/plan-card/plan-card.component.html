@@ -1,7 +1,7 @@
 <div class="row workoutsRow mx-0 mt-3">
 
     <ng-container *ngFor="let workout of plan.workouts">
-        <div class="col-12 px-0">
+        <div class="col-12 px-0 mb-3">
         <app-workouts-card [workout]="workout" [hasDelete]="true" [parentPlan]="plan" [planView]="true" [hasEdit]="false" [hasExpand]="true"></app-workouts-card>
         </div>
     </ng-container>

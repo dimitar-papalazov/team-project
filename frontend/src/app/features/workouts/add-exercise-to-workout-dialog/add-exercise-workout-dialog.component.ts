@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { ExcerciseService } from '../../exercises/excercises.service';
 import { Exercise } from '../../exercises/models/excercise';
 import { WorkoutsService } from '../workouts.service';
@@ -29,6 +30,7 @@ export class AddExcercisesToWorkoutComponent implements OnInit {
     private readonly editProfileDialogService: AddExcercisesToWorkoutService,
     private exerciseService: ExcerciseService,
     private workoutService: WorkoutsService,
+    private snackbarService: SnackbarService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -44,6 +46,7 @@ export class AddExcercisesToWorkoutComponent implements OnInit {
 
   add(){
     this.exerciseService.addExerciseToWorkout(this.selectedExercise.id, this.data.workoutId).subscribe(data => {
+      this.snackbarService.fireSnackbar('success',"Succesfully added exercise to workout!")
       this.workoutService.workoutsChanges.emit()
       this.matDialogRef.close();
     })

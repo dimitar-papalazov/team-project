@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { PlanService } from '../../plan/plan.service';
 import { AddExcercisesToWorkoutService } from '../add-exercise-to-workout-dialog/service/add-exercise-workout-dialog.service';
 import { Workout } from '../models/workout';
@@ -29,6 +30,7 @@ export class WorkoutsCardComponent implements OnInit {
   constructor(public responsiveListenerService: ResponsiveListener, 
     public workoutService: WorkoutsService,
     public addExcerciseToWorkoutDialogService: AddExcercisesToWorkoutService,
+    private snackbarService: SnackbarService,
     private planService: PlanService) { }
 
   ngOnInit(): void {
@@ -50,6 +52,7 @@ export class WorkoutsCardComponent implements OnInit {
 
   removeWorkoutFromPlan(){
     this.planService.removeWorkoutFromPlan(this.workout.id,this.parentPlan.id).subscribe(()=>{
+      this.snackbarService.fireSnackbar('success',"Succesfully removed workout from plan!")
       this.planService.plansChanges.emit()
     })
   }
@@ -60,6 +63,7 @@ export class WorkoutsCardComponent implements OnInit {
 
   deleteWorkout(){
     this.workoutService.deleteWorkout(this.workout.id).subscribe(()=>{
+      this.snackbarService.fireSnackbar('success',"Succesfully deleted workout!")
       this.workoutService.workoutsChanges.emit()
     })
   }

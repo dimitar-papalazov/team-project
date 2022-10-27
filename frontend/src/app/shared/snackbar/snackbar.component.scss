@@ -2,3 +2,15 @@ snack-bar-container.text-align-center simple-snack-bar span {
   margin: auto;
   text-align: center;
 }
+
+
+::ng-deep .mat-snack-bar-container {
+  margin-top: calc(85vh) !important;
+}
+
+
+@media (min-width: 768px){
+  ::ng-deep .mat-snack-bar-container {
+    margin-left: 200px !important;
+  }
+}

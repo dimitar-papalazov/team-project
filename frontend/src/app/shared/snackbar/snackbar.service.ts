@@ -43,7 +43,7 @@ export class SnackbarService {
         var data: any = {
             icon: this.templates[tpl].icon,
             color: this.templates[tpl].color,
-            message: msg
+            message: "  "+msg,
         }
         this.snackBar.openFromComponent(SnackbarComponent, {data: data})
     }

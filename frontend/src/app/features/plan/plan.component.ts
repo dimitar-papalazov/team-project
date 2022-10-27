@@ -4,6 +4,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { TitleService } from 'src/app/core/title.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ResponsiveListener } from 'src/app/shared/services/responsive-listener.service';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { WorkoutsService } from '../workouts/workouts.service';
 import { AddPlanDialogService } from './add-plan-dialog/service/add-plan-dialog';
 import { AddWorkoutToPlanService } from './add-workout-to-plan-dialog/service/add-exercise-workout-dialog.service';
@@ -29,6 +30,7 @@ export class PlanComponent implements OnInit, OnDestroy {
     public responsiveListenerService: ResponsiveListener,
     public addWorkoutToPlanDialogService: AddWorkoutToPlanService,
     public addPlanService: AddPlanDialogService,
+    private snackbarService: SnackbarService,
     private plansService: PlanService,
     private loaderService: LoaderService) { 
       this.sub.add(
@@ -65,6 +67,7 @@ export class PlanComponent implements OnInit, OnDestroy {
 
   deletePlan(planId?: number){
     this.plansService.deletePlan(planId).subscribe(()=>{
+      this.snackbarService.fireSnackbar('success',"Succesfully deleted plan!")
       this.plansService.plansChanges.emit()
     })
   }

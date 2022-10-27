@@ -1,7 +1,7 @@
 <div class="cardContent mx-4 mb-3">
     <div class="row workoutsRow mx-0">
         <ng-container *ngFor="let exercise of exercises | async">
-            <div class="col-12 px-0">
+            <div class="col-12 px-0 mb-3">
                 <div class="title">{{exercise.name}}</div>
                 <app-progress [progresses]="exercise.progresses"></app-progress>
             </div>

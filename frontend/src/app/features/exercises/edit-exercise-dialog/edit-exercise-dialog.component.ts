@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { SnackbarService } from 'src/app/shared/snackbar/snackbar.service';
 import { ExcerciseService } from '../excercises.service';
 import { Exercise } from '../models/excercise';
 import { EditExerciseDialogService } from './service/edit-exercise-dialog.service';
@@ -25,6 +26,7 @@ export class EditExerciseDialogComponent implements OnInit {
     private readonly editProfileDialogService: EditExerciseDialogService,
     private exerciseService: ExcerciseService,
     private localStorageService: LocalStorageService,
+    private snackbarService: SnackbarService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -52,11 +54,13 @@ export class EditExerciseDialogComponent implements OnInit {
     this.exercise.goal = this.goal;
     if(this.editMode.value ){
       this.exerciseService.putExercise(this.exercise).subscribe(data => {
+        this.snackbarService.fireSnackbar('success',"Succesfully added exercise!")
         this.exerciseService.exerciseChanges.emit()
         this.matDialogRef.close();
       })
     }else{
       this.exerciseService.postExercise(this.exercise).subscribe(data => {
+        this.snackbarService.fireSnackbar('success',"Succesfully updated exercise!")
         this.exerciseService.exerciseChanges.emit()
         this.matDialogRef.close();
       })
