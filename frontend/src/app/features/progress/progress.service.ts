@@ -31,8 +31,7 @@ export class ProgressService {
   }
 
   putProgress(progress: Progress): any{
-    const progressId = progress.id;
-    return this.http.put<any>('http://localhost:3000/progresses/' + progress.id, {progress, progressId}).pipe(map(data => {
+    return this.http.put<any>('http://localhost:3000/progresses/' + progress.id, progress).pipe(map(data => {
         return data;
     }));
   }
