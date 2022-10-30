@@ -2,7 +2,6 @@ import { EventEmitter, Injectable, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { LocalStorageService } from 'src/app/core/services/local-storage.service';
-import { Workout } from '../workouts/models/workout';
 import { Progress } from './models/progress';
 
 @Injectable({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TitleService } from 'src/app/core/title.service';
+import { Exercise } from '../exercises/models/excercise';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { TitleService } from 'src/app/core/title.service';
 })
 export class DashboardComponent implements OnInit {
   months: string[] = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
+  exercise: Exercise = new Exercise();
 
   dataOtherEvents: any = {
     title: 'Workouts',
@@ -37,7 +39,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private titleService: TitleService,
     private translateService: TranslateService
-  ) {}
+  ) {
+    this.exercise.id = 1;
+    this.exercise.progresses = [];
+    this.exercise.name = 'Bench'
+  }
 
   ngOnInit(): void {
     this.titleService.setTitle(this.translateService.instant('Dashboard'));

@@ -1,0 +1,20 @@
+.pagination, mat-paginator{
+    width: -webkit-fill-available
+}
+
+.emptyProgressCard{
+    background-color: rgba(0, 0, 0, 0.351);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    min-height: 50px;
+    color: #8aff88;
+    cursor: pointer;
+}
+
+.plusIcon{
+    cursor: pointer;
+    color: #8aff88;
+}
