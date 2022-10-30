@@ -8,5 +8,5 @@ export class Exercise {
     public url: string;
     public user: number;
     public workouts: number[];
-    public progresses: progress[];
+    public progresses: any[];
 }

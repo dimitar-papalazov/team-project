@@ -14,6 +14,7 @@ import { AddProgressDialogComponent } from './progress/add-progress-dialog/add-p
 import { AddProgressDialogService } from './progress/add-progress-dialog/service/add-progress-dialog';
 import { ProgressService } from './progress/progress.service';
 import { ProgressListComponent } from './progress/progress-list/progress-list.component';
+import { MainChartComponent } from './components/main-chart/main-chart.component';
 
 const routes: Routes = [
   {
@@ -34,9 +35,11 @@ const routes: Routes = [
     DashboardComponent, 
     PieChartComponent, 
     LineChartComponent, 
+    MainChartComponent,
     ProgressComponent, 
     ProgressListComponent,
-    AddProgressDialogComponent],
+    AddProgressDialogComponent,
+    MainChartComponent],
   providers: [DashboardService, PieChartService, LineChartService, AddProgressDialogService, ProgressService],
 })
 export class DashboardModule {}

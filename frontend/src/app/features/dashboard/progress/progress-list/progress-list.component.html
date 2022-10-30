@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="progresses" matSort matSortActive="d" matSortDisableClear>
+<table mat-table [dataSource]="dataSource" matSort matSortActive="d" matSortDisableClear>
 
     <ng-container matColumnDef="d">
 
@@ -17,13 +17,12 @@
         <td mat-cell *matCellDef="let progress">{{progress.t}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="action">
+    <!-- <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'Action' | translate }} </th>
         <td mat-cell *matCellDef="let progress">
-            <!-- <i class="fa fa-remove" class="mr-2" aria-hidden="true"> </i> -->
             <i [class]="trashIcon" class="plusIcon" (click)="deleteProgress(progress.id)" aria-hidden="true"> </i>
         </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -33,7 +32,7 @@
 <div fxLayout="row" fxLayoutAlign="space-between center">
     <span class="spacer"></span>
     <div class="pagination">
-        <mat-paginator aria-label="Select page" [pageSizeOptions]="pageSizeOptions" showFirstLastButtons></mat-paginator>
+        <mat-paginator #paginator aria-label="Select page" [pageSize]="5" showFirstLastButtons></mat-paginator>
     </div>
 </div>
 

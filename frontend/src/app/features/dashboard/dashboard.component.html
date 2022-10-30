@@ -19,11 +19,8 @@
     <app-progress [exercise]="exercise"></app-progress>
   </div>
 
-  <div class="col-lg-4 col-md-4 col-sm-4 mr-0 pr-0">
-    <app-line-chart
-      [allData]="dataFluctuation"
-      [dates]="dates"
-    ></app-line-chart>
+  <div class="col-lg-4 col-md-4 col-sm-4 mr-0 pr-5 py-4 mt-4">
+    <app-main-chart [exercise]="exercise"></app-main-chart>
   </div>
 
 </div>
