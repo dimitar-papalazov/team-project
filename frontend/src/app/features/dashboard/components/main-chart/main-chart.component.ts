@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { progress } from 'src/app/core/models/progress';
 
@@ -12,7 +13,8 @@ export class MainChartComponent implements OnInit {
   public chart: any;
   @Input() exercise;
 
-  constructor() { }
+  constructor(private changeDetector: ChangeDetectorRef,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.createChart();
@@ -20,22 +22,33 @@ export class MainChartComponent implements OnInit {
 
   createChart(){
 
+    var chartExist = Chart.getChart("MyChart"); // <canvas> id
+    if (chartExist != undefined){
+      chartExist.destroy(); 
+      window.location.reload()
+    }
+
     let dates = [];
     let values = [];
-    console.log(this.exercise)
-
+  
     this.exercise.progresses.forEach(progress => {
-      dates.push(progress.d)
+      dates.push(new Date(progress.d))
       values.push(progress.val)
     });
-  
-    console.log(dates)
-    console.log(values)
-    this.chart = new Chart("MyChart", {
-      type: 'line', //this denotes tha type of chart
+    dates = dates.sort(
+      (objA, objB) => objB.getTime() - objA.getTime(),
+    );
+    let cleanDates = [];
+    dates.forEach(cleanDate => {
+      cleanDates.push(cleanDate.toString().substring(0,15))
+    })
+    cleanDates = cleanDates.slice(0,9);
 
-      data: {// values on X-Axis
-        labels: dates, 
+    this.chart = new Chart("MyChart", {
+      type: 'line',
+
+      data: {
+        labels: cleanDates, 
 	       datasets: [
           {
             label: "Last 10 progresses chart",
@@ -50,5 +63,15 @@ export class MainChartComponent implements OnInit {
       }
       
     });
+
+    this.changeDetector.detectChanges()
   }
+
+  reloadCurrentRoute() {
+    console.log("sdfdf")
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 }

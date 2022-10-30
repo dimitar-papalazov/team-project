@@ -23,7 +23,7 @@ export class ProgressService {
 
   postProgress(progress: Progress): any{
     let tempuser = this.localStorageService.getItem('currentUser');
-    progress.member = tempuser;
+    progress.user = tempuser.id;
     return this.http.post<any>('http://localhost:3000/progresses/', progress).pipe(map(data => {
         return data;
     }));

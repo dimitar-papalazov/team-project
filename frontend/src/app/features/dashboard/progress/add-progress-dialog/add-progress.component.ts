@@ -48,16 +48,16 @@ export class AddProgressDialogComponent implements OnInit {
 
   add(){
     const newProgress = new Progress();
-    newProgress.d = new Date();
-    newProgress.val = this.value;
-    newProgress.t = this.getOptionLabel(this.selectedType);
-    newProgress.member = this.localStorageService.getItem('currentUser').id;
-    // this.progressService.postProgress(newProgress).subscribe(data => {
-    //   this.snackbarService.fireSnackbar('success',"Succesfully added progress!")
-    //   this.progressService.progressChanges.emit()
-    //   this.matDialogRef.close();
-    // })
-    console.log(newProgress)
+    newProgress.date = new Date();
+    newProgress.value = this.value;
+    newProgress.type = this.getOptionLabel(this.selectedType);
+    newProgress.user = this.localStorageService.getItem('currentUser').id;
+    newProgress.exercise = this.data.exerciseId;
+    this.progressService.postProgress(newProgress).subscribe(data => {
+      this.snackbarService.fireSnackbar('success',"Succesfully added progress!")
+      this.progressService.progressChanges.emit()
+      this.matDialogRef.close();
+    })
   }
 
   getOptionLabel(type: ProgressType) {

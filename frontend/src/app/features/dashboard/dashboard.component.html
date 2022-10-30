@@ -1,26 +1,11 @@
-<div class="row mx-4 mt-3 p-0">
-  <!-- <div class="col-lg-4 col-md-4 col-sm-12 left p-0 m-0">
-    <div class="ml-5 title mb-3">Statistics: </div>
-    <div class="ml-5 mb-4 mr-5">
-      <app-pie-chart-square [allData]="dataOtherEvents"></app-pie-chart-square>
+<ng-container *ngFor="let exercise of exercises | async">
+  <div class="row mx-4 mt-3 p-0">
+    <div class="col-lg-8 col-md-12 col-sm-12 pl-4 py-4">
+      <app-progress [exercise]="exercise"></app-progress>
     </div>
-    <div class="ml-5 mr-5">
-      <app-line-chart
-        [allData]="dataFluctuation"
-        [months]="months"
-      ></app-line-chart>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 mr-0 pr-5 py-4 mt-4">
+      <app-main-chart [exercise]="exercise"></app-main-chart>
     </div>
   </div>
-  <div class="col-8 p-0 m-0">
-    <div class="title mb-3 ml-4">Progresses: </div>
-    <app-progress-list></app-progress-list>
-  </div> -->
-  <div class="col-lg-8 col-md-8 col-sm-8 pl-4 py-4">
-    <app-progress [exercise]="exercise"></app-progress>
-  </div>
-
-  <div class="col-lg-4 col-md-4 col-sm-4 mr-0 pr-5 py-4 mt-4">
-    <app-main-chart [exercise]="exercise"></app-main-chart>
-  </div>
-
-</div>
+</ng-container>
