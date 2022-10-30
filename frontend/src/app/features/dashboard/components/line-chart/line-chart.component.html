@@ -1,22 +1,25 @@
-<h4>{{ title }}</h4>
+<div class="flex">
+  <div class="fullWidth px-4">
+  <h4>{{ title }}</h4>
 
-<figure class="css-chart" style="--widget-size: 180px">
-  <ul class="line-chart">
-    <li
-      *ngFor="let val of data; index as i"
-      [style.--x.px]="xValues[i]"
-      [style.--y.px]="yValues[i]"
-    >
-      <div class="data-number">{{ val }}</div>
-      <div class="data-point" [attr.data-value]="values[i]"></div>
-      <div
-        class="line-segment"
-        [style.--hypotenuse]="hypValues[i]"
-        [style.--angle]="angleValues[i]"
-      ></div>
-    </li>
-  </ul>
-</figure>
-<span *ngFor="let val of months">
-  {{ val }}
-</span>
+  <figure class="css-chart" style="--widget-size: 180px">
+    <ul class="line-chart">
+      <li
+        *ngFor="let val of data; index as i"
+        [style.--x.px]="xValues[i]"
+        [style.--y.px]="yValues[i]"
+      >
+        <div class="data-number">{{ val }}</div>
+        <div class="data-point" [attr.data-value]="values[i]"></div>
+        <div
+          class="line-segment"
+          [style.--hypotenuse]="hypValues[i]"
+          [style.--angle]="angleValues[i]"
+        ></div>
+      </li>
+    </ul>
+  </figure>
+  <span *ngFor="let val of dates">
+    {{ val }}
+  </span></div>
+</div>

@@ -11,7 +11,7 @@ export class LineChartComponent implements OnInit {
   allData: any = {};
 
   @Input()
-  months!: string[];
+  dates!: string[];
 
   data!: any[];
   values: number[] = [];

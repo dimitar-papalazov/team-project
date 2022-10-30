@@ -9,7 +9,7 @@ import { Exercise } from '../exercises/models/excercise';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  months: string[] = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
+  dates: string[] = ['Mar', 'Apr', 'May', 'Jun', 'Jul'];
   exercise: Exercise = new Exercise();
 
   dataOtherEvents: any = {
