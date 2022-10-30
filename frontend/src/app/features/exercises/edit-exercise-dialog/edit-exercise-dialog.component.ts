@@ -54,13 +54,13 @@ export class EditExerciseDialogComponent implements OnInit {
     this.exercise.goal = this.goal;
     if(this.editMode.value ){
       this.exerciseService.putExercise(this.exercise).subscribe(data => {
-        this.snackbarService.fireSnackbar('success',"Succesfully added exercise!")
+        this.snackbarService.fireSnackbar('success',"Succesfully updated exercise!")
         this.exerciseService.exerciseChanges.emit()
         this.matDialogRef.close();
       })
     }else{
       this.exerciseService.postExercise(this.exercise).subscribe(data => {
-        this.snackbarService.fireSnackbar('success',"Succesfully updated exercise!")
+        this.snackbarService.fireSnackbar('success',"Succesfully add exercise!")
         this.exerciseService.exerciseChanges.emit()
         this.matDialogRef.close();
       })
