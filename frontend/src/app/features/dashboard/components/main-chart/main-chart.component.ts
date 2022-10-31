@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Chart from 'chart.js/auto';
+import Chart, { ChartConfiguration, ChartOptions } from 'chart.js/auto';
 import { progress } from 'src/app/core/models/progress';
 
 @Component({
@@ -13,21 +13,32 @@ export class MainChartComponent implements OnInit {
   public chart: any;
   @Input() exercise;
 
+  public lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: [
+      [0,1,2,3,4,5,6,7,8,9]
+    ],
+    datasets: [
+      {
+        data: [0,1,2,3,4,5,6,7,8,9],
+        label: 'Series A',
+        fill: true,
+        tension: 0.5,
+        borderColor: 'black',
+        backgroundColor: 'rgba(255,0,0,0.3)'
+      }
+    ]
+  }
+
+  public lineChartOptions: ChartOptions<'line'> = {
+    responsive: false
+  };
+
+  public lineChartLegend = true;
+
   constructor(private changeDetector: ChangeDetectorRef,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.createChart();
-  }
-
-  createChart(){
-
-    var chartExist = Chart.getChart("MyChart"); // <canvas> id
-    if (chartExist != undefined){
-      chartExist.destroy(); 
-      window.location.reload()
-    }
-
     let dates = [];
     let values = [];
   
@@ -43,35 +54,31 @@ export class MainChartComponent implements OnInit {
       cleanDates.push(cleanDate.toString().substring(0,15))
     })
     cleanDates = cleanDates.slice(0,9);
-
-    this.chart = new Chart("MyChart", {
-      type: 'line',
-
-      data: {
-        labels: cleanDates, 
-	       datasets: [
+    values = values.slice(0.9)
+    this.lineChartData = {
+        labels: [
+          cleanDates[0],
+          cleanDates[1],
+          cleanDates[2],
+          cleanDates[3],
+          cleanDates[4],
+          cleanDates[5],
+          cleanDates[6],
+          cleanDates[7],
+          cleanDates[8],
+          cleanDates[9]
+        ],
+        datasets: [
           {
-            label: "Last 10 progresses chart",
-            data: values,
-            backgroundColor: 'grey',
-            borderColor: "#8aff88"
+            data: [values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8],values[9]],
+            label: 'Series A',
+            fill: true,
+            tension: 1,
+            borderColor: 'black',
+            backgroundColor: '#8aff88'
           }
         ]
-      },
-      options: {
-        aspectRatio:1
-      }
-      
-    });
-
-    this.changeDetector.detectChanges()
+    }
   }
 
-  reloadCurrentRoute() {
-    console.log("sdfdf")
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-        this.router.navigate([currentUrl]);
-    });
-}
 }

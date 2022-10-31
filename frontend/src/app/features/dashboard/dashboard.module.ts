@@ -15,6 +15,7 @@ import { AddProgressDialogService } from './progress/add-progress-dialog/service
 import { ProgressService } from './progress/progress.service';
 import { ProgressListComponent } from './progress/progress-list/progress-list.component';
 import { MainChartComponent } from './components/main-chart/main-chart.component';
+import { NgChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
     CoreModule,
     CommonModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
+    NgChartsModule
   ],
   exports: [RouterModule],
   declarations: [
